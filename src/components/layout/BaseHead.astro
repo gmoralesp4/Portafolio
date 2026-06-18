@@ -1,0 +1,52 @@
+---
+import { getCV } from '@lib/utils';
+import { getPageSEO, generatePersonJsonLd } from '@lib/seo';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogType?: string;
+  canonical?: string;
+}
+
+const cv = getCV();
+const { personalInfo } = cv;
+const path = Astro.url.pathname;
+const seo = getPageSEO(path, cv);
+const pageTitle = Astro.props.title || seo.title;
+const pageDescription = Astro.props.description || seo.description;
+const pageOgType = Astro.props.ogType || seo.ogType || 'website';
+const pageCanonical = Astro.props.canonical || seo.canonical || `${personalInfo.website}${path}`;
+const jsonLd = generatePersonJsonLd(cv);
+const siteUrl = personalInfo.website;
+const ogImage = `${siteUrl}/images/og-image.png`;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription} />
+<meta name="keywords" content={cv.seo.keywords.join(', ')} />
+<meta name="author" content={personalInfo.fullName} />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+
+<link rel="canonical" href={pageCanonical} />
+
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content={pageCanonical} />
+<meta property="og:type" content={pageOgType} />
+<meta property="og:site_name" content={personalInfo.preferredName} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" set:html={jsonLd} />

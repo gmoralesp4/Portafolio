@@ -1,0 +1,86 @@
+---
+import { getCV } from '@lib/utils';
+const cv = getCV();
+const { personalInfo } = cv;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/about', label: 'Sobre Mí' },
+  { href: '/experience', label: 'Experiencia' },
+  { href: '/projects', label: 'Proyectos' },
+  { href: '/skills', label: 'Habilidades' },
+  { href: '/education', label: 'Educación' },
+  { href: '/contact', label: 'Contacto' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-surface-950/80 border-b border-slate-700/30">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="text-lg font-bold text-slate-50 hover:text-cyan-400 transition-colors duration-200">
+      <span class="text-cyan-400">{'<'}</span>
+      <span>{personalInfo.preferredName}</span>
+      <span class="text-cyan-400">{'/>'}</span>
+    </a>
+    <div class="hidden md:flex items-center gap-1">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={
+              `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                  ? 'text-cyan-400 bg-cyan-400/10'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+              }`
+            }
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800" aria-label="Menú de navegación">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-slate-700/30 bg-surface-900/95 backdrop-blur-xl">
+    <div class="px-4 py-3 space-y-1">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={
+              `block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                currentPath === item.href
+                  ? 'text-cyan-400 bg-cyan-400/10'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+              }`
+            }
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>

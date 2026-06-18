@@ -1,0 +1,26 @@
+---
+export interface Props {
+  class?: string;
+  delay?: number;
+}
+
+const { class: className, delay = 0 } = Astro.props;
+const style = delay ? `transition-delay: ${delay}ms` : '';
+---
+
+<div class={`opacity-0 translate-y-4 transition-all duration-700 ease-out ${className || ''}`} style={style} data-reveal>
+  <slot />
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-4');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+</script>

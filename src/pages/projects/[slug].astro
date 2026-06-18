@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCV } from '@lib/utils';
+import Badge from '@components/ui/Badge.astro';
+import ScrollReveal from '@components/ui/ScrollReveal.astro';
+import Button from '@components/ui/Button.astro';
+
+export async function getStaticPaths() {
+  const cv = getCV();
+  return cv.projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.name} — Proyectos`} description={project.description}>
+  <div class="pt-24">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="mb-12">
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Volver a proyectos
+        </a>
+        <ScrollReveal>
+          <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-4">
+            <span class="w-8 h-px bg-cyan-400/50" />
+            <span>{project.type}</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 mb-6">{project.name}</h1>
+          <p class="text-lg text-slate-400 max-w-2xl">{project.description}</p>
+          <div class="flex flex-wrap gap-2 mt-6">
+            {project.technologies.map((tech) => (
+              <Badge key={tech} variant="accent" size="md">{tech}</Badge>
+            ))}
+          </div>
+        </ScrollReveal>
+      </div>
+
+      <div class="space-y-12">
+        <ScrollReveal>
+          <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-8">
+            <h2 class="text-xl font-bold text-slate-50 mb-4 flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-sm">!</span>
+              Problema
+            </h2>
+            <p class="text-slate-400 leading-relaxed">{project.problem}</p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-8">
+            <h2 class="text-xl font-bold text-slate-50 mb-4 flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 text-sm">✓</span>
+              Solución
+            </h2>
+            <p class="text-slate-400 leading-relaxed">{project.solution}</p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-8">
+            <h2 class="text-xl font-bold text-slate-50 mb-4 flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 text-sm">⚙</span>
+              Arquitectura
+            </h2>
+            <p class="text-slate-400 leading-relaxed">{project.architecture}</p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={300}>
+          <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-8">
+            <h2 class="text-xl font-bold text-slate-50 mb-4 flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-violet-400/10 border border-violet-400/20 flex items-center justify-center text-violet-400 text-sm">★</span>
+              Resultados
+            </h2>
+            <ul class="space-y-3">
+              {project.results.map((result) => (
+                <li class="flex items-start gap-3 text-slate-400">
+                  <span class="text-emerald-400 mt-1 shrink-0">✓</span>
+                  <span>{result}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </ScrollReveal>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

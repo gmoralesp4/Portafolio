@@ -1,0 +1,59 @@
+---
+import { getCV } from '@lib/utils';
+import ScrollReveal from '@components/ui/ScrollReveal.astro';
+import Badge from '@components/ui/Badge.astro';
+import Button from '@components/ui/Button.astro';
+
+const cv = getCV();
+---
+
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-4">
+        <span class="w-8 h-px bg-cyan-400/50" />
+        <span>Proyectos</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 mb-6">Casos de Estudio</h1>
+      <p class="text-lg text-slate-400 mb-16 max-w-2xl">
+        Proyectos empresariales en el sector financiero y asegurador, con impacto real en operaciones regionales.
+      </p>
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        cv.projects.map((project, index) => (
+          <ScrollReveal delay={index * 100}>
+            <div class="h-full bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl overflow-hidden hover:border-slate-600/50 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300 flex flex-col">
+              <div class="h-40 bg-gradient-to-br from-cyan-400/10 via-slate-800 to-violet-500/10 flex items-center justify-center border-b border-slate-700/30">
+                <div class="w-16 h-16 rounded-full bg-surface-800/80 border border-cyan-400/20 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-center gap-2 mb-3">
+                  <Badge variant="accent" size="sm">{project.type}</Badge>
+                </div>
+                <h3 class="text-xl font-bold text-slate-50 mb-3">{project.name}</h3>
+                <p class="text-sm text-slate-400 mb-4 flex-1">{project.description}</p>
+
+                <div class="flex flex-wrap gap-2 mb-5">
+                  {
+                    project.technologies.map((tech) => (
+                      <Badge key={tech}>{tech}</Badge>
+                    ))
+                  }
+                </div>
+
+                <Button href={`/projects/${project.slug}`} variant="secondary" size="sm">
+                  Ver caso de estudio
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        ))
+      }
+    </div>
+  </div>
+</section>

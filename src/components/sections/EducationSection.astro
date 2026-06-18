@@ -1,0 +1,109 @@
+---
+import { getCV } from '@lib/utils';
+import ScrollReveal from '@components/ui/ScrollReveal.astro';
+import Badge from '@components/ui/Badge.astro';
+
+const cv = getCV();
+---
+
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-4">
+        <span class="w-8 h-px bg-cyan-400/50" />
+        <span>Formación</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 mb-6">Educación</h1>
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        cv.education.map((edu, index) => (
+          <ScrollReveal delay={index * 100}>
+            <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 hover:border-slate-600/50 transition-all duration-300">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-50">{edu.degree}</h3>
+                  <p class="text-cyan-400 font-medium">{edu.institution}</p>
+                </div>
+                <Badge variant={edu.status === 'Graduado' ? 'success' : 'accent'} size="sm">{edu.status}</Badge>
+              </div>
+              <p class="text-sm text-slate-500 font-mono">{edu.startDate} — {edu.endDate}</p>
+            </div>
+          </ScrollReveal>
+        ))
+      }
+    </div>
+
+    <ScrollReveal>
+      <div class="mt-12">
+        <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-6">
+          <span class="w-8 h-px bg-cyan-400/50" />
+          <span>Certificaciones</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            cv.certifications.map((cert, index) => (
+              <ScrollReveal delay={index * 100}>
+                <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 hover:border-slate-600/50 transition-all duration-300">
+                  <h3 class="text-base font-bold text-slate-50">{cert.name}</h3>
+                  <p class="text-sm text-cyan-400 mb-2">{cert.issuer}</p>
+                  <Badge variant="success" size="sm">{cert.status}</Badge>
+                </div>
+              </ScrollReveal>
+            ))
+          }
+          {
+            cv.certificationsInProgress.map((cert, index) => (
+              <ScrollReveal delay={index * 100 + 100}>
+                <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 hover:border-slate-600/50 transition-all duration-300">
+                  <h3 class="text-base font-bold text-slate-50">{cert.name}</h3>
+                  <p class="text-sm text-cyan-400 mb-2">{cert.issuer}</p>
+                  <Badge variant="accent" size="sm">{cert.status}</Badge>
+                </div>
+              </ScrollReveal>
+            ))
+          }
+        </div>
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <div class="mt-12">
+        <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-6">
+          <span class="w-8 h-px bg-cyan-400/50" />
+          <span>Cursos</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {
+            cv.courses.map((course, index) => (
+              <div key={index} class="bg-surface-900/30 border border-slate-700/20 rounded-lg p-4">
+                <h4 class="text-sm font-medium text-slate-200">{course.name}</h4>
+                <p class="text-xs text-slate-500 mt-1">{course.platform} · {course.category}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <div class="mt-12">
+        <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono mb-6">
+          <span class="w-8 h-px bg-cyan-400/50" />
+          <span>Idiomas</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          {
+            cv.languages.map((lang, index) => (
+              <div key={index} class="bg-surface-900/50 border border-slate-700/30 rounded-lg px-5 py-3">
+                <span class="text-sm font-medium text-slate-200">{lang.language}</span>
+                <span class="text-sm text-slate-500 ml-2">· {lang.level}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>
