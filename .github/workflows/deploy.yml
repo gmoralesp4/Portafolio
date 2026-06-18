@@ -18,4 +18,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: withastro/action@v6
+        with:
+          package-manager: npm
         id: deployment
