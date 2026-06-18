@@ -4,6 +4,20 @@ import type { CVData } from '@types/cv';
 
 const cv = cvData as CVData;
 
+export const BASE_PATH = '/Portafolio';
+
+export function assetPath(path: string): string {
+  return `${BASE_PATH}${path}`;
+}
+
+export function fullAssetUrl(path: string): string {
+  return `https://gmoralesp4.github.io${BASE_PATH}${path}`;
+}
+
+export function pagePath(path: string): string {
+  return `${BASE_PATH}${path}`;
+}
+
 export function getCV(): CVData {
   return cv;
 }

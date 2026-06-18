@@ -1,5 +1,5 @@
 ---
-import { getCV } from '@lib/utils';
+import { getCV, assetPath, pagePath } from '@lib/utils';
 import Button from '@components/ui/Button.astro';
 import Badge from '@components/ui/Badge.astro';
 
@@ -45,11 +45,11 @@ const totalYears = new Date().getFullYear() - 2021;
         </div>
 
         <div class="flex flex-wrap gap-3">
-          <Button href="/projects" variant="primary" size="lg">
+          <Button href={pagePath('/projects')} variant="primary" size="lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             Ver Proyectos
           </Button>
-          <Button href="/contact" variant="secondary" size="lg">
+          <Button href={pagePath('/contact')} variant="secondary" size="lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Contactar
           </Button>
@@ -63,7 +63,7 @@ const totalYears = new Date().getFullYear() - 2021;
       <div class="flex justify-center lg:justify-end">
         <div class="relative">
           <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-2 border-cyan-400/30 shadow-2xl shadow-cyan-400/10">
-            <img src="/images/profile.webp" alt={personalInfo.preferredName} class="w-full h-full object-cover" />
+            <img src={assetPath('/images/profile.webp')} alt={personalInfo.preferredName} class="w-full h-full object-cover" />
           </div>
           <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-violet-500/20 rounded-full blur-3xl" />
           <div class="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-violet-500/20 to-cyan-400/20 rounded-full blur-3xl" />

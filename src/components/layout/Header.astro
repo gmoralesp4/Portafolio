@@ -1,7 +1,8 @@
 ---
-import { getCV } from '@lib/utils';
+import { getCV, pagePath } from '@lib/utils';
 const cv = getCV();
 const { personalInfo } = cv;
+const base = Astro.base;
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -12,12 +13,12 @@ const navItems = [
   { href: '/skills', label: 'Habilidades' },
   { href: '/education', label: 'Educación' },
   { href: '/contact', label: 'Contacto' },
-];
+].map(item => ({ ...item, href: pagePath(item.href) }));
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-surface-950/80 border-b border-slate-700/30">
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/" class="text-lg font-bold text-slate-50 hover:text-cyan-400 transition-colors duration-200">
+    <a href={pagePath('/')} class="text-lg font-bold text-slate-50 hover:text-cyan-400 transition-colors duration-200">
       <span class="text-cyan-400">{'<'}</span>
       <span>{personalInfo.preferredName}</span>
       <span class="text-cyan-400">{'/>'}</span>
@@ -29,7 +30,9 @@ const navItems = [
             href={item.href}
             class={
               `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                (currentPath === base + '/') && item.href === base + '/'
+                  ? 'text-cyan-400 bg-cyan-400/10'
+                  : (currentPath !== base + '/' && currentPath.startsWith(item.href))
                   ? 'text-cyan-400 bg-cyan-400/10'
                   : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
               }`

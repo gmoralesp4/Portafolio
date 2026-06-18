@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://gmoralesp4.github.io',
-  base: '/',
+  base: '/Portafolio',
   output: 'static',
   integrations: [
     tailwind(),

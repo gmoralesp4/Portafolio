@@ -1,5 +1,5 @@
 ---
-import { getCV } from '@lib/utils';
+import { getCV, assetPath } from '@lib/utils';
 import { getPageSEO, generatePersonJsonLd } from '@lib/seo';
 
 export interface Props {
@@ -11,12 +11,12 @@ export interface Props {
 
 const cv = getCV();
 const { personalInfo } = cv;
-const path = Astro.url.pathname;
-const seo = getPageSEO(path, cv);
+const pathWithoutBase = Astro.url.pathname.replace(Astro.base, '') || '/';
+const seo = getPageSEO(pathWithoutBase, cv);
 const pageTitle = Astro.props.title || seo.title;
 const pageDescription = Astro.props.description || seo.description;
 const pageOgType = Astro.props.ogType || seo.ogType || 'website';
-const pageCanonical = Astro.props.canonical || seo.canonical || `${personalInfo.website}${path}`;
+const pageCanonical = Astro.props.canonical || seo.canonical || Astro.url.href;
 const jsonLd = generatePersonJsonLd(cv);
 const siteUrl = personalInfo.website;
 const ogImage = `${siteUrl}/images/og-image.png`;
@@ -24,7 +24,7 @@ const ogImage = `${siteUrl}/images/og-image.png`;
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={assetPath('/favicon.svg')} />
 <meta name="generator" content={Astro.generator} />
 
 <title>{pageTitle}</title>
