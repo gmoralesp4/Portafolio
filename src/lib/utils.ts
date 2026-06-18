@@ -58,8 +58,9 @@ export function getTotalYearsExperience(): number {
 }
 
 export const skillGroups: SkillGroup[] = [
-  { id: 'backend' as SkillCategory, label: 'Backend', items: [...cv.skills.backend, ...cv.skills.databases, ...cv.skills.architecture] },
+  { id: 'backend' as SkillCategory, label: 'Backend', items: [...cv.skills.backend, ...cv.skills.architecture] },
   { id: 'frontend' as SkillCategory, label: 'Frontend', items: cv.skills.frontend },
+  { id: 'databases' as SkillCategory, label: 'Bases de Datos', items: cv.skills.databases },
   { id: 'cloud' as SkillCategory, label: 'Cloud / DevOps', items: [...cv.skills.cloud, ...cv.skills.methodologies] },
-  { id: 'security' as SkillCategory, label: 'Herramientas', items: [...cv.skills.security, ...cv.skills.domainKnowledge, ...cv.skills.softSkills] },
+  { id: 'tools' as SkillCategory, label: 'Herramientas', items: cv.skills.tools },
 ];

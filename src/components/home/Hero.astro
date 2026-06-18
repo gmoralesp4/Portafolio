@@ -45,19 +45,19 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
           <Badge variant="accent" size="md">PCI · ISO 27000</Badge>
         </div>
 
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-4">
           <Button href={pagePath('/projects')} variant="primary" size="lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-            Ver Proyectos
+            Proyectos
           </Button>
           <Button href={pagePath('/contact')} variant="secondary" size="lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Contactar
+            Contacto
           </Button>
-          <Button href={pagePath('/contact')} variant="ghost" size="lg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <button id="hero-download-cv" class="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:ring-offset-2 focus:ring-offset-surface-950 px-6 py-3 text-base gap-2.5 bg-cyan-500 text-slate-950 border border-cyan-400/50 hover:bg-cyan-400 hover:shadow-xl hover:shadow-cyan-400/25 hover:scale-105 active:scale-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Descargar CV
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -73,3 +73,62 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
     </div>
   </div>
 </section>
+
+<script>
+  import pdfMake from 'pdfmake/build/pdfmake';
+  import pdfFonts from 'pdfmake/build/vfs_fonts';
+  pdfMake.vfs = pdfFonts.pdfMake ? pdfFonts.pdfMake.vfs : pdfFonts.vfs;
+
+  function buildHeroPdf() {
+    return {
+      content: [
+        { text: 'GERSON FRANCISCO MORALES PÉREZ', style: 'name', alignment: 'center' },
+        { text: 'Analista Programador', style: 'subtitle', alignment: 'center' },
+        { text: 'Email: gfranciscomoralesp01@gmail.com | Tel: 5752-3207 | Guatemala', style: 'contact', alignment: 'center' },
+        '',
+        { text: 'RESUMEN PROFESIONAL', style: 'sectionHeader' },
+        { text: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador. Trabajo con .NET, Java, Node.js, Oracle y SQL Server en entornos regulados que exigen alta disponibilidad, seguridad y cumplimiento normativo. Mi enfoque está en la arquitectura de aplicaciones empresariales, la integración de sistemas mediante APIs REST y SOAP, y el desarrollo de servicios backend robustos.', style: 'paragraph' },
+        '',
+        { text: 'EXPERIENCIA PROFESIONAL', style: 'sectionHeader' },
+        { text: 'Analista Programador II — Procesadora de Tarjeta de Crédito Banrural (Feb 2024 - Presente)', style: 'jobTitle' },
+        { text: '• Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.', style: 'bullet' },
+        { text: '• Desarrollar servicios backend y componentes para CRM y procesos transaccionales.', style: 'bullet' },
+        { text: '• Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.', style: 'bullet' },
+        '',
+        { text: 'Analista Programador Full Stack — IT Profis / MAPFRE (Jul 2021 - Feb 2024)', style: 'jobTitle' },
+        { text: '• Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.', style: 'bullet' },
+        { text: '• Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.', style: 'bullet' },
+        { text: '• Implementar soluciones de reportería integradas a procesos corporativos regionales.', style: 'bullet' },
+        '',
+        { text: 'Desarrollador Full Stack — Proyectos Independientes / PYMES', style: 'jobTitle' },
+        { text: '• Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.', style: 'bullet' },
+        { text: '• Desarrollar APIs y lógica de negocio para integración con servicios externos.', style: 'bullet' },
+        '',
+        { text: 'EDUCACIÓN', style: 'sectionHeader' },
+        { text: 'Maestría en Seguridad Informática — Universidad Mariano Gálvez de Guatemala (2023 - 2024)', style: 'eduLine' },
+        { text: 'Ingeniería de Sistemas — Universidad Mariano Gálvez de Guatemala (2018 - 2022)', style: 'eduLine' },
+        '',
+        { text: 'HABILIDADES', style: 'sectionHeader' },
+        { text: '.NET | .NET Framework | C# | Java | Node.js | APIs REST | SOAP | Oracle | PL/SQL | SQL Server | MySQL | React | Angular | TypeScript | JavaScript | HTML5 | CSS3 | Git | Scrum', style: 'skills' },
+      ],
+      styles: {
+        name: { fontSize: 16, bold: true, margin: [0, 0, 0, 4] },
+        subtitle: { fontSize: 11, margin: [0, 0, 0, 4], color: '#334155' },
+        contact: { fontSize: 9, margin: [0, 0, 0, 8], color: '#64748b' },
+        sectionHeader: { fontSize: 11, bold: true, margin: [0, 10, 0, 4], color: '#0f172a' },
+        paragraph: { fontSize: 9, lineHeight: 1.4 },
+        jobTitle: { fontSize: 10, bold: true, margin: [0, 6, 0, 2] },
+        bullet: { fontSize: 9, margin: [0, 1, 0, 0], lineHeight: 1.3 },
+        eduLine: { fontSize: 9, margin: [0, 2, 0, 0] },
+        skills: { fontSize: 9, margin: [0, 4, 0, 0], lineHeight: 1.4 },
+      },
+      defaultStyle: { font: 'Helvetica' },
+    };
+  }
+
+  document.getElementById('hero-download-cv')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const docDef = buildHeroPdf();
+    pdfMake.createPdf(docDef).download('Gerson_Morales_CV.pdf');
+  });
+</script>

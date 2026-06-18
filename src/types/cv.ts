@@ -35,6 +35,7 @@ export interface Skills {
   methodologies: string[];
   domainKnowledge: string[];
   softSkills: string[];
+  tools: string[];
 }
 
 export interface Experience {
@@ -108,7 +109,8 @@ export type SkillCategory =
   | 'cloud'
   | 'methodologies'
   | 'domainKnowledge'
-  | 'softSkills';
+  | 'softSkills'
+  | 'tools';
 
 export interface SkillGroup {
   id: SkillCategory;

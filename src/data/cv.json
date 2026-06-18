@@ -9,7 +9,7 @@
     "website": "https://gmoralesp4.github.io/Portafolio",
     "linkedin": "https://www.linkedin.com/in/gerson-morales-1a3b5b25b",
     "github": "https://github.com/gmoralesp4",
-    "summary": "Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador. Trabajo con .NET, Java, Node.js, Oracle y SQL Server en entornos regulados que exigen alta disponibilidad, seguridad y cumplimiento normativo.\n\nMi enfoque está en la arquitectura de aplicaciones empresariales, la integración de sistemas mediante APIs REST y SOAP, y el desarrollo de servicios backend robustos. Participo desde el análisis de requerimientos hasta la puesta en producción, coordinando con equipos multidisciplinarios y clientes internacionales.\n\nExperiencia en implementación de controles alineados a PCI DSS e ISO 27000, cifrado de datos y desarrollo seguro. Maestría en Seguridad Informática."
+    "summary": "He pasado los últimos años construyendo software backend para banca y seguros. Mi trabajo diario implica diseñar APIs, servicios y bases de datos que procesan transacciones financieras, generan reportes regionales y mantienen la información protegida bajo estándares PCI DSS e ISO 27000.\n\nTrabajo con .NET, Java, Node.js, Oracle y SQL Server. Prefiero arquitecturas modulares, código mantenible y pruebas que respalden cada entrega. Me involucro desde la etapa de análisis —entiendo el problema antes de escribir la primera línea— hasta el despliegue y la operación.\n\nCreo que el software bien construido se nota en producción: responde rápido, no falla en horario crítico y se puede modificar sin romper todo. Ese es el estándar que aplico en cada proyecto.\n\nActualmente estoy profundizando en cloud computing (AWS) y arquitectura de sistemas distribuidos. También tengo una Maestría en Seguridad Informática, lo que me permite abordar el desarrollo con una visión de protección de datos desde el diseño."
   },
   "skills": {
     "backend": [
@@ -48,6 +48,12 @@
       "Procesamiento de pagos", "Sistemas bancarios",
       "Reportería empresarial", "Cumplimiento regulatorio",
       "Atención a clientes internacionales"
+    ],
+    "tools": [
+      "Git", "Postman", "JIRA", "Azure DevOps",
+      "Visual Studio", "Visual Studio Code",
+      "SQL Server Management Studio", "Oracle SQL Developer",
+      "SonarQube", "Docker (en adopción)"
     ],
     "softSkills": [
       "Liderazgo técnico", "Pensamiento analítico",
@@ -140,10 +146,10 @@
   ],
   "projects": [
     {
-      "name": "Reporterías empresariales regionales",
+      "name": "Sistema de reportería regional automatizado",
       "slug": "reporterias-regionales",
       "type": "Proyecto empresarial",
-      "description": "Sistema automatizado de reportería regional para MAPFRE. Se implementó un proceso ETL sobre Oracle Database que eliminó la generación manual de informes, redujo errores y estandarizó la información en todas las operaciones regionales.",
+      "description": "Solución orientada a automatizar la generación de reportes regionales en MAPFRE. Se implementó un proceso ETL sobre Oracle Database que reemplazó la carga manual de datos, redujo errores de consistencia y unificó la información financiera y operativa de múltiples países.",
       "technologies": ["Oracle", "PL/SQL", "SQL"],
       "problem": "La organización enfrentaba procesos manuales de reportería que consumían tiempo significativo del equipo, generaban inconsistencias en los datos y limitaban la capacidad de respuesta ante requerimientos regionales.",
       "solution": "Se implementó un sistema automatizado de reportería integrado a los sistemas corporativos existentes, utilizando Oracle y PL/SQL para la extracción, transformación y carga de datos con generación automatizada de informes.",
@@ -160,10 +166,10 @@
       ]
     },
     {
-      "name": "Proyectos web empresariales",
+      "name": "Modernización de plataformas internas legacy",
       "slug": "web-empresariales",
       "type": "Proyecto empresarial",
-      "description": "Modernización de herramientas internas legacy hacia aplicaciones web con ASP.NET y JavaScript, integradas con Oracle Database. Mejoró la productividad del equipo y facilitó el mantenimiento evolutivo.",
+      "description": "Aplicaciones web diseñadas para reemplazar herramientas internas con interfaces obsoletas. Construidas con ASP.NET y JavaScript sobre Oracle Database, mejoraron la productividad del equipo operativo y redujeron la carga de mantenimiento sobre sistemas heredados.",
       "technologies": ["JavaScript", "ASP.NET", "HTML5", "CSS3", "Oracle"],
       "problem": "Procesos internos dependían de herramientas legacy con interfaces obsoletas que limitaban la productividad del equipo y dificultaban el mantenimiento evolutivo.",
       "solution": "Se desarrollaron aplicaciones web modernas utilizando ASP.NET y JavaScript, integradas con Oracle Database, que modernizaron los flujos de trabajo interno y mejoraron la experiencia de usuario.",

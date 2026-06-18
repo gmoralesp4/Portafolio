@@ -17,74 +17,82 @@ const cv = getCV();
     </ScrollReveal>
 
     <div class="relative">
-      <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/50 via-violet-500/50 to-transparent transform md:-translate-x-px" />
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/50 via-violet-500/50 to-transparent -translate-x-px" />
 
       {
-        cv.experience.map((exp, index) => (
-          <div class={`relative flex flex-col md:flex-row gap-8 mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-            <div class="hidden md:block md:w-1/2" />
-            <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-surface-950 transform -translate-x-1.5 md:translate-x-0 md:-translate-x-2 z-10 mt-6" />
-
+        cv.experience.map((exp, index) => {
+          const isLeft = index % 2 === 0;
+          const card = (
             <ScrollReveal delay={index * 100}>
-              <div class="md:w-1/2 pl-8 md:pl-0 md:px-8">
-                <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 hover:border-slate-600/50 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300">
-                  <div class="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 class="text-xl font-bold text-slate-50">{exp.position}</h3>
-                      <p class="text-cyan-400 font-medium">{exp.company}</p>
-                    </div>
-                    <Badge variant={exp.current ? 'success' : 'default'} size="sm">
-                      {exp.current ? 'Actual' : exp.employmentType}
-                    </Badge>
+              <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 hover:border-slate-600/50 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 class="text-xl font-bold text-slate-50">{exp.position}</h3>
+                    <p class="text-cyan-400 font-medium">{exp.company}</p>
                   </div>
+                  <Badge variant={exp.current ? 'success' : 'default'} size="sm">
+                    {exp.current ? 'Actual' : exp.employmentType}
+                  </Badge>
+                </div>
+                <p class="text-sm text-slate-500 font-mono mb-4">{getDateRange(exp.startDate, exp.endDate, exp.current)}</p>
+                <p class="text-sm text-slate-400 mb-4">{exp.description}</p>
 
-                  <p class="text-sm text-slate-500 font-mono mb-4">{getDateRange(exp.startDate, exp.endDate, exp.current)}</p>
-                  <p class="text-sm text-slate-400 mb-4">{exp.description}</p>
+                <div class="space-y-2 mb-4">
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Responsabilidades</p>
+                  <ul class="space-y-1.5">
+                    {exp.responsibilities.map((r) => (
+                      <li class="flex items-start gap-2 text-sm text-slate-400">
+                        <span class="text-cyan-400 mt-1 shrink-0">•</span>
+                        <span>{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
+                {exp.achievements.length > 0 && (
                   <div class="space-y-2 mb-4">
-                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Responsabilidades</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Logros</p>
                     <ul class="space-y-1.5">
-                      {
-                        exp.responsibilities.map((r) => (
-                          <li class="flex items-start gap-2 text-sm text-slate-400">
-                            <span class="text-cyan-400 mt-1 shrink-0">•</span>
-                            <span>{r}</span>
-                          </li>
-                        ))
-                      }
+                      {exp.achievements.map((a) => (
+                        <li class="flex items-start gap-2 text-sm text-slate-400">
+                          <span class="text-cyan-400 mt-1 shrink-0">★</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
+                )}
 
-                  {
-                    exp.achievements.length > 0 && (
-                      <div class="space-y-2 mb-4">
-                        <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Logros</p>
-                        <ul class="space-y-1.5">
-                          {
-                            exp.achievements.map((a) => (
-                              <li class="flex items-start gap-2 text-sm text-slate-400">
-                                <span class="text-cyan-400 mt-1 shrink-0">★</span>
-                                <span>{a}</span>
-                              </li>
-                            ))
-                          }
-                        </ul>
-                      </div>
-                    )
-                  }
-
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    {
-                      exp.technologies.map((tech) => (
-                        <Badge key={tech}>{tech}</Badge>
-                      ))
-                    }
-                  </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {exp.technologies.map((tech) => (
+                    <Badge key={tech}>{tech}</Badge>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>
+          );
+
+          return (
+          <div class="relative flex flex-col md:grid md:grid-cols-[1fr_64px_1fr] mb-12">
+            <div class={`hidden md:flex flex-col ${isLeft ? 'items-end pr-8' : 'col-start-3 items-start pl-8'}`}>
+              {isLeft ? card : null}
+            </div>
+
+            <div class="relative flex justify-center z-10">
+              <div class="w-4 h-4 rounded-full bg-cyan-400 border-4 border-surface-950 shrink-0 mt-6 z-10 ml-5 md:ml-0" />
+              <div class="md:hidden absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/50 via-violet-500/50 to-transparent" />
+            </div>
+
+            <div class="flex md:hidden flex-col pl-5">
+              {card}
+            </div>
+
+            <div class={`hidden md:flex flex-col ${isLeft ? 'col-start-3 items-start pl-8' : 'items-end pr-8'}`}>
+              {!isLeft ? card : null}
+            </div>
           </div>
-        ))
+          );
+        })
       }
     </div>
   </div>
