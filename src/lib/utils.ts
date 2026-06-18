@@ -58,13 +58,8 @@ export function getTotalYearsExperience(): number {
 }
 
 export const skillGroups: SkillGroup[] = [
-  { id: 'backend' as SkillCategory, label: 'Backend', items: cv.skills.backend },
+  { id: 'backend' as SkillCategory, label: 'Backend', items: [...cv.skills.backend, ...cv.skills.databases, ...cv.skills.architecture] },
   { id: 'frontend' as SkillCategory, label: 'Frontend', items: cv.skills.frontend },
-  { id: 'databases' as SkillCategory, label: 'Bases de Datos', items: cv.skills.databases },
-  { id: 'architecture' as SkillCategory, label: 'Arquitectura', items: cv.skills.architecture },
-  { id: 'security' as SkillCategory, label: 'Seguridad', items: cv.skills.security },
-  { id: 'cloud' as SkillCategory, label: 'Cloud', items: cv.skills.cloud },
-  { id: 'methodologies' as SkillCategory, label: 'Metodologías', items: cv.skills.methodologies },
-  { id: 'domainKnowledge' as SkillCategory, label: 'Conocimiento de Dominio', items: cv.skills.domainKnowledge },
-  { id: 'softSkills' as SkillCategory, label: 'Habilidades Blandas', items: cv.skills.softSkills },
+  { id: 'cloud' as SkillCategory, label: 'Cloud / DevOps', items: [...cv.skills.cloud, ...cv.skills.methodologies] },
+  { id: 'security' as SkillCategory, label: 'Herramientas', items: [...cv.skills.security, ...cv.skills.domainKnowledge, ...cv.skills.softSkills] },
 ];

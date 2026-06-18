@@ -41,6 +41,27 @@ const { project } = Astro.props;
 
       <div class="space-y-12">
         <ScrollReveal>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-5 text-center">
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Objetivo</span>
+              <p class="text-sm text-slate-200 mt-2">{project.description}</p>
+            </div>
+            <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-5 text-center">
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Tecnologías</span>
+              <div class="flex flex-wrap gap-1.5 mt-2 justify-center">
+                {project.technologies.map((tech) => (
+                  <span class="text-xs text-cyan-400 font-mono bg-cyan-400/5 px-2 py-0.5 rounded">{tech}</span>
+                ))}
+              </div>
+            </div>
+            <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-5 text-center">
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Impacto</span>
+              <p class="text-sm text-slate-200 mt-2">{project.results[0]}</p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
           <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-8">
             <h2 class="text-xl font-bold text-slate-50 mb-4 flex items-center gap-3">
               <span class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-sm">!</span>

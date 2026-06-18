@@ -28,7 +28,7 @@ export function generatePersonJsonLd(cv: CVData): string {
         '@id': `${url}/#person`,
         name: personalInfo.fullName,
         alternateName: personalInfo.preferredName,
-        description: personalInfo.summary.slice(0, 200),
+        description: personalInfo.summary.replace(/\n/g, ' ').slice(0, 200),
         jobTitle: personalInfo.jobTitle,
         image: `${url}/images/profile.webp`,
         email: `mailto:${personalInfo.email}`,
@@ -73,36 +73,36 @@ export function getPageSEO(path: string, cv: CVData): PageSEO {
 
   const pages: Record<string, PageSEO> = {
     '/': {
-      title: `${personalInfo.fullName} — ${personalInfo.jobTitle} | .NET, Java, Oracle`,
-      description: `${personalInfo.jobTitle} Full Stack con experiencia en sector financiero y asegurador. .NET, Java, Oracle, SQL Server, APIs REST. ${personalInfo.location}.`,
+      title: `${personalInfo.preferredName} — ${personalInfo.jobTitle} | Backend Engineer .NET Java Oracle`,
+      description: `Backend Engineer con experiencia en sector financiero y asegurador. .NET, Java, Oracle, SQL Server, APIs REST, PCI DSS, ISO 27000. ${personalInfo.location}.`,
     },
     '/about': {
       title: `Sobre Mí — ${personalInfo.preferredName} | ${personalInfo.jobTitle}`,
-      description: `Ingeniero de software Full Stack con experiencia en sector financiero y asegurador. Maestría en Seguridad Informática. ${personalInfo.location}.`,
+      description: `Ingeniero de software especializado en backend empresarial. .NET, Java, Node.js, Oracle, SQL Server. Maestría en Seguridad Informática.`,
     },
     '/experience': {
       title: `Experiencia Profesional — ${personalInfo.preferredName}`,
-      description: `Trayectoria profesional en desarrollo Full Stack: MAPFRE, Banrural, proyectos independientes. ${personalInfo.location}.`,
+      description: `Trayectoria en backend empresarial: Banrural (pagos), MAPFRE (seguros), proyectos freelance. ${personalInfo.location}.`,
     },
     '/projects': {
-      title: `Proyectos — ${personalInfo.preferredName} | Desarrollo de Software`,
-      description: `Proyectos empresariales: reportería regional, soluciones web bancarias, integración de sistemas. ${personalInfo.location}.`,
+      title: `Proyectos — ${personalInfo.preferredName} | Casos de estudio`,
+      description: `Reportería regional MAPFRE (Oracle ETL), modernización web ASP.NET. Proyectos empresariales con impacto real.`,
     },
     '/skills': {
-      title: `Habilidades Técnicas — ${personalInfo.preferredName}`,
-      description: `Stack tecnológico: .NET, Java, Angular, React, Oracle, SQL Server, APIs REST, seguridad informática.`,
+      title: `Stack Tecnológico — ${personalInfo.preferredName}`,
+      description: `.NET, Java, Node.js, Oracle, SQL Server, React, Angular, TypeScript, AWS, PCI DSS, ISO 27000.`,
     },
     '/education': {
       title: `Educación — ${personalInfo.preferredName} | Maestría en Seguridad Informática`,
-      description: `Maestría en Seguridad Informática e Ingeniería de Sistemas — Universidad Mariano Gálvez.`,
+      description: `Maestría en Seguridad Informática e Ingeniería de Sistemas — Universidad Mariano Gálvez. Certificación Scrum Fundamentals.`,
     },
     '/contact': {
       title: `Contacto — ${personalInfo.preferredName}`,
-      description: `Contáctame: ${personalInfo.email} | GitHub: ${personalInfo.github}`,
+      description: `Disponible para oportunidades como Backend Engineer. Email: ${personalInfo.email} | LinkedIn.`,
     },
     '/blog': {
       title: `Blog — ${personalInfo.preferredName}`,
-      description: `Artículos técnicos sobre desarrollo de software, arquitectura, .NET, Angular y bases de datos.`,
+      description: `Artículos sobre backend, arquitectura de software, .NET, seguridad informática y bases de datos.`,
     },
   };
 

@@ -19,7 +19,9 @@ const { personalInfo } = cv;
             {personalInfo.preferredName}
           </h1>
           <div class="space-y-4 text-slate-400 leading-relaxed">
-            <p>{personalInfo.summary}</p>
+            {personalInfo.summary.split('\n\n').map(paragraph => (
+              <p>{paragraph.trim()}</p>
+            ))}
           </div>
         </div>
         <div class="lg:col-span-2">
@@ -46,12 +48,7 @@ const { personalInfo } = cv;
                   <a href={personalInfo.linkedin} target="_blank" class="hover:text-cyan-400 transition-colors">Ver perfil</a>
                 </p>
               </div>
-              <div>
-                <span class="text-xs text-slate-500 uppercase tracking-wider">GitHub</span>
-                <p class="text-sm text-slate-200 mt-0.5">
-                  <a href={personalInfo.github} target="_blank" class="hover:text-cyan-400 transition-colors">Ver repositorios</a>
-                </p>
-              </div>
+
             </div>
           </div>
         </div>

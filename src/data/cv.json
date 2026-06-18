@@ -9,7 +9,7 @@
     "website": "https://gmoralesp4.github.io/Portafolio",
     "linkedin": "https://www.linkedin.com/in/gerson-morales-1a3b5b25b",
     "github": "https://github.com/gmoralesp4",
-    "summary": "Ingeniero de software Full Stack con experiencia en el sector financiero y asegurador, especializado en el diseño, desarrollo e implementación de soluciones empresariales de alta criticidad. Trayectoria construyendo aplicaciones web, APIs y plataformas orientadas a seguridad, rendimiento y escalabilidad, participando desde el análisis funcional hasta la entrega y puesta en producción. Experiencia liderando e impulsando iniciativas tecnológicas en entornos regulados, incluyendo proyectos regionales de reportería, modernización de sistemas, cumplimiento de estándares de seguridad y protección de información bajo marcos PCI e ISO 27000."
+    "summary": "Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador. Trabajo con .NET, Java, Node.js, Oracle y SQL Server en entornos regulados que exigen alta disponibilidad, seguridad y cumplimiento normativo.\n\nMi enfoque está en la arquitectura de aplicaciones empresariales, la integración de sistemas mediante APIs REST y SOAP, y el desarrollo de servicios backend robustos. Participo desde el análisis de requerimientos hasta la puesta en producción, coordinando con equipos multidisciplinarios y clientes internacionales.\n\nExperiencia en implementación de controles alineados a PCI DSS e ISO 27000, cifrado de datos y desarrollo seguro. Maestría en Seguridad Informática."
   },
   "skills": {
     "backend": [
@@ -65,19 +65,19 @@
       "endDate": null,
       "current": true,
       "location": "Guatemala",
-      "description": "Desarrollo e implementación de soluciones financieras enfocadas en seguridad, cumplimiento normativo y protección de información para plataforma bancaria y de procesamiento de pagos.",
+      "description": "Diseño e implementación de servicios backend y APIs para plataforma bancaria y procesamiento de pagos, con énfasis en seguridad, cumplimiento normativo y protección de datos financieros.",
       "responsibilities": [
-        "Implementar controles alineados a estándares PCI y marcos ISO 27000.",
-        "Desarrollar servicios backend y componentes para CRM y procesos bancarios.",
-        "Diseñar e implementar APIs REST y SOAP para integración entre sistemas.",
-        "Desarrollar y mantener bases de datos SQL Server para aplicaciones de carácter sensible.",
-        "Participar en análisis de requerimientos y coordinación con clientes internacionales."
+        "Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.",
+        "Desarrollar servicios backend y componentes para CRM y procesos transaccionales.",
+        "Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.",
+        "Administrar y optimizar bases de datos SQL Server para aplicaciones de carácter sensible.",
+        "Analizar requerimientos y coordinar entregas con clientes internacionales."
       ],
       "achievements": [
-        "Participación en iniciativas orientadas al fortalecimiento de seguridad y cumplimiento regulatorio.",
-        "Implementación de mecanismos de protección y resguardo de información financiera.",
-        "Contribución al desarrollo de servicios y procesos asociados al ecosistema bancario.",
-        "Experiencia trabajando con requerimientos y colaboración internacional."
+        "Fortalecimiento de seguridad y cumplimiento regulatorio en plataforma de pagos.",
+        "Implementación de cifrado AES-256 para protección de datos financieros.",
+        "Desarrollo de servicios backend para ecosistema bancario con alta disponibilidad.",
+        "Coordinación directa con stakeholders internacionales para requerimientos críticos."
       ],
       "technologies": [
         ".NET", ".NET Framework", "C#", "SQL Server",
@@ -93,18 +93,18 @@
       "endDate": "2024-02",
       "current": false,
       "location": "Guatemala",
-      "description": "Diseño, desarrollo e implementación de soluciones empresariales para la aseguradora, participando en proyectos web de alcance regional y en la evolución de plataformas orientadas al negocio sobre ecosistemas Oracle.",
+      "description": "Diseño, desarrollo y mantenimiento de aplicaciones web empresariales para operaciones regionales de la aseguradora, sobre ecosistema Oracle con frontend en ASP.NET y Java.",
       "responsibilities": [
-        "Diseñar, desarrollar y mantener aplicaciones web empresariales bajo enfoque Full Stack.",
-        "Desarrollar y optimizar componentes sobre Oracle Database utilizando PL/SQL.",
-        "Analizar requerimientos funcionales y transformarlos en soluciones tecnológicas escalables.",
-        "Gestionar e implementar soluciones de reportería integradas a procesos corporativos.",
-        "Participar en despliegues, mantenimiento evolutivo y mejora continua de aplicaciones."
+        "Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.",
+        "Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.",
+        "Transformar requerimientos funcionales en soluciones tecnológicas escalables.",
+        "Implementar soluciones de reportería integradas a procesos corporativos regionales.",
+        "Gestionar despliegues y mantenimiento evolutivo de sistemas críticos."
       ],
       "achievements": [
-        "Participación en proyectos tecnológicos para operaciones de la aseguradora.",
-        "Implementación de soluciones de reportería con alcance regional dentro de la organización.",
-        "Contribución en la continuidad operativa y evolución de sistemas empresariales críticos."
+        "Implementación de reportería automatizada con alcance regional multinacional.",
+        "Modernización de herramientas internas legacy hacia aplicaciones web.",
+        "Optimización de consultas PL/SQL que mejoraron tiempos de respuesta en reportes críticos."
       ],
       "technologies": [
         "Oracle", "PL/SQL", "Java", "ASP.NET",
@@ -119,18 +119,18 @@
       "endDate": null,
       "current": false,
       "location": "Guatemala",
-      "description": "Desarrollo de soluciones tecnológicas para pequeñas y medianas empresas, participando en el ciclo completo de construcción de productos desde el levantamiento de requerimientos hasta despliegue y soporte.",
+      "description": "Desarrollo de soluciones web Full Stack para pequeñas y medianas empresas, abarcando desde el levantamiento de requerimientos hasta el despliegue y soporte técnico.",
       "responsibilities": [
-        "Diseñar y desarrollar aplicaciones web bajo arquitectura Full Stack.",
-        "Construir interfaces modernas enfocadas en experiencia de usuario.",
-        "Desarrollar APIs y lógica de negocio para integración de servicios.",
-        "Modelar y administrar bases de datos relacionales.",
-        "Participar en definición técnica y entrega de soluciones adaptadas al cliente."
+        "Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.",
+        "Construir interfaces funcionales con React, Angular y TypeScript.",
+        "Desarrollar APIs y lógica de negocio para integración con servicios externos.",
+        "Modelar y administrar bases de datos relacionales SQL Server y MySQL.",
+        "Definir stack técnico y entregar soluciones adaptadas al cliente."
       ],
       "achievements": [
-        "Entrega de soluciones tecnológicas para distintos modelos de negocio.",
-        "Experiencia liderando el ciclo completo de desarrollo de software.",
-        "Adaptación de tecnologías según necesidades específicas de cada proyecto."
+        "Entrega de soluciones tecnológicas para múltiples modelos de negocio.",
+        "Liderazgo del ciclo completo de desarrollo: requerimientos a producción.",
+        "Selección y adaptación de tecnologías según necesidad de cada proyecto."
       ],
       "technologies": [
         "React", "Angular", "Node.js", "JavaScript",
@@ -143,7 +143,7 @@
       "name": "Reporterías empresariales regionales",
       "slug": "reporterias-regionales",
       "type": "Proyecto empresarial",
-      "description": "Gestión e implementación de reportería dentro del sistema empresarial regional de MAPFRE, automatizando la generación de informes y optimizando los procesos de toma de decisiones a nivel regional.",
+      "description": "Sistema automatizado de reportería regional para MAPFRE. Se implementó un proceso ETL sobre Oracle Database que eliminó la generación manual de informes, redujo errores y estandarizó la información en todas las operaciones regionales.",
       "technologies": ["Oracle", "PL/SQL", "SQL"],
       "problem": "La organización enfrentaba procesos manuales de reportería que consumían tiempo significativo del equipo, generaban inconsistencias en los datos y limitaban la capacidad de respuesta ante requerimientos regionales.",
       "solution": "Se implementó un sistema automatizado de reportería integrado a los sistemas corporativos existentes, utilizando Oracle y PL/SQL para la extracción, transformación y carga de datos con generación automatizada de informes.",
@@ -163,7 +163,7 @@
       "name": "Proyectos web empresariales",
       "slug": "web-empresariales",
       "type": "Proyecto empresarial",
-      "description": "Desarrollo e implementación de soluciones web para la operación interna de la aseguradora, facilitando procesos de negocio y mejorando la eficiencia operativa del personal.",
+      "description": "Modernización de herramientas internas legacy hacia aplicaciones web con ASP.NET y JavaScript, integradas con Oracle Database. Mejoró la productividad del equipo y facilitó el mantenimiento evolutivo.",
       "technologies": ["JavaScript", "ASP.NET", "HTML5", "CSS3", "Oracle"],
       "problem": "Procesos internos dependían de herramientas legacy con interfaces obsoletas que limitaban la productividad del equipo y dificultaban el mantenimiento evolutivo.",
       "solution": "Se desarrollaron aplicaciones web modernas utilizando ASP.NET y JavaScript, integradas con Oracle Database, que modernizaron los flujos de trabajo interno y mejoraron la experiencia de usuario.",
@@ -244,20 +244,27 @@
   ],
   "continuousLearning": {
     "openToLearning": true,
-    "description": "Orientado al aprendizaje continuo, adopción de nuevas tecnologías y fortalecimiento constante de habilidades técnicas alineadas con tendencias de ingeniería de software, seguridad y nube."
+    "description": "Actualmente preparando certificación AWS Cloud Practitioner. Interés en arquitectura cloud, seguridad ofensiva y sistemas distribuidos."
   },
-  "seo": {
-    "keywords": [
-      "Gerson Francisco Morales Pérez",
-      "Analista Programador Guatemala",
-      "Oracle Developer Guatemala",
-      "PLSQL Developer",
-      "ASP.NET Developer",
-      "Java Developer",
-      "SQL Server",
-      "MySQL",
-      "Desarrollador Web Guatemala",
-      "Software Developer Guatemala"
-    ]
+    "seo": {
+      "keywords": [
+        "Gerson Morales",
+        "Backend Engineer Guatemala",
+        "Software Engineer .NET",
+        "Java Developer Oracle PLSQL",
+        "Full Stack Developer",
+        "Analista Programador Senior",
+        ".NET Developer",
+        "Oracle Database Developer",
+        "SQL Server Developer",
+        "APIs REST SOAP",
+        "C# Developer",
+        "Angular Developer",
+        "Sector Financiero",
+        "Sector Asegurador",
+        "PCI Compliance",
+        "ISO 27000",
+        "Desarrollador de Software Guatemala"
+      ]
   }
 }

@@ -1,5 +1,5 @@
 ---
-import { getCV } from '@lib/utils';
+import { getCV, pagePath } from '@lib/utils';
 import ScrollReveal from '@components/ui/ScrollReveal.astro';
 import Button from '@components/ui/Button.astro';
 
@@ -16,9 +16,9 @@ const { personalInfo } = cv;
           <span>Contacto</span>
           <span class="w-8 h-px bg-cyan-400/50" />
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 mb-6">Conectemos</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 mb-6">Contacto</h1>
         <p class="text-lg text-slate-400 max-w-xl mx-auto">
-          Si tienes un proyecto, una oportunidad o simplemente quieres conectar, estoy a un mensaje de distancia.
+          Si buscas un ingeniero de software con experiencia en backend empresarial, escríbeme.
         </p>
       </div>
     </ScrollReveal>
@@ -35,16 +35,6 @@ const { personalInfo } = cv;
       </ScrollReveal>
 
       <ScrollReveal delay={100}>
-        <a href={personalInfo.github} target="_blank" class="block bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 text-center hover:border-cyan-400/30 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-400/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="text-cyan-400"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </div>
-          <h3 class="text-base font-semibold text-slate-200 mb-1">GitHub</h3>
-          <p class="text-sm text-slate-400">@gmoralesp4</p>
-        </a>
-      </ScrollReveal>
-
-      <ScrollReveal delay={200}>
         <a href={personalInfo.linkedin} target="_blank" class="block bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 text-center hover:border-cyan-400/30 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300 group">
           <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-400/20 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="text-cyan-400"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -53,6 +43,166 @@ const { personalInfo } = cv;
           <p class="text-sm text-slate-400">Gerson Morales</p>
         </a>
       </ScrollReveal>
+
+      <ScrollReveal delay={200}>
+        <div class="bg-surface-900/50 backdrop-blur-md border border-slate-700/30 rounded-xl p-6 text-center hover:border-cyan-400/30 hover:shadow-lg hover:shadow-cyan-400/5 transition-all duration-300 group h-full flex flex-col items-center justify-center">
+          <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-slate-200 mb-3">Descargar CV</h3>
+          <div class="flex flex-col gap-2 w-full">
+            <Button id="download-ats" variant="secondary" size="sm" class="w-full justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              CV ATS
+            </Button>
+            <Button id="download-visual" variant="primary" size="sm" class="w-full justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              CV Visual
+            </Button>
+          </div>
+        </div>
+      </ScrollReveal>
     </div>
   </div>
 </section>
+
+<script>
+  import pdfMake from 'pdfmake/build/pdfmake';
+  import pdfFonts from 'pdfmake/build/vfs_fonts';
+  pdfMake.vfs = pdfFonts.pdfMake ? pdfFonts.pdfMake.vfs : pdfFonts.vfs;
+
+  function buildAtsPdf(cv) {
+    const { personalInfo, experience, education, skills } = cv;
+    const allSkills = [
+      ...skills.backend,
+      ...skills.frontend,
+      ...skills.databases,
+      ...skills.architecture,
+      ...skills.security,
+    ];
+
+    return {
+      content: [
+        { text: personalInfo.fullName.toUpperCase(), style: 'name' },
+        { text: personalInfo.jobTitle, style: 'subtitle' },
+        { text: `Email: ${personalInfo.email} | Tel: ${personalInfo.phone} | ${personalInfo.location}`, style: 'contact' },
+        '',
+        { text: 'RESUMEN PROFESIONAL', style: 'sectionHeader' },
+        { text: personalInfo.summary, style: 'paragraph' },
+        '',
+        { text: 'EXPERIENCIA PROFESIONAL', style: 'sectionHeader' },
+        ...experience.map(exp => [
+          { text: exp.position, style: 'jobTitle' },
+          { text: `${exp.company} | ${exp.startDate || ''} - ${exp.endDate || 'Presente'}`, style: 'company' },
+          ...exp.responsibilities.map(r => ({ text: `• ${r}`, style: 'bullet' })),
+          '',
+        ]).flat(),
+        { text: 'EDUCACIÓN', style: 'sectionHeader' },
+        ...education.map(edu => [
+          { text: `${edu.degree} — ${edu.institution}`, style: 'eduLine' },
+          { text: `${edu.status} | ${edu.startDate} - ${edu.endDate}`, style: 'eduDates' },
+          '',
+        ]).flat(),
+        { text: 'HABILIDADES', style: 'sectionHeader' },
+        { text: allSkills.join(' | '), style: 'skills' },
+      ],
+      styles: {
+        name: { fontSize: 18, bold: true, margin: [0, 0, 0, 4] },
+        subtitle: { fontSize: 12, margin: [0, 0, 0, 4], color: '#334155' },
+        contact: { fontSize: 9, margin: [0, 0, 0, 8], color: '#64748b' },
+        sectionHeader: { fontSize: 11, bold: true, margin: [0, 12, 0, 4], color: '#0f172a' },
+        paragraph: { fontSize: 9, lineHeight: 1.4 },
+        jobTitle: { fontSize: 10, bold: true, margin: [0, 6, 0, 2] },
+        company: { fontSize: 9, margin: [0, 0, 0, 2], color: '#475569' },
+        bullet: { fontSize: 9, margin: [0, 1, 0, 0], lineHeight: 1.3 },
+        eduLine: { fontSize: 9, margin: [0, 2, 0, 0] },
+        eduDates: { fontSize: 8, color: '#64748b' },
+        skills: { fontSize: 9, margin: [0, 4, 0, 0], lineHeight: 1.4 },
+      },
+      defaultStyle: { font: 'Helvetica' },
+    };
+  }
+
+  function buildVisualPdf(cv) {
+    const { personalInfo, experience, education, skills } = cv;
+    const allSkills = [
+      ...skills.backend.slice(0, 4),
+      ...skills.frontend.slice(0, 3),
+      ...skills.databases.slice(0, 3),
+    ];
+
+    return {
+      content: [
+        { text: personalInfo.fullName, style: 'vName' },
+        { text: personalInfo.jobTitle, style: 'vSubtitle' },
+        { text: `${personalInfo.email} · ${personalInfo.phone} · ${personalInfo.location}`, style: 'vContact' },
+        '',
+        { text: 'Perfil Profesional', style: 'vSection' },
+        { text: personalInfo.summary, style: 'vParagraph' },
+        '',
+        { text: 'Experiencia', style: 'vSection' },
+        ...experience.map(exp => [
+          { text: exp.company, style: 'vCompany' },
+          { text: exp.position, style: 'vRole' },
+          { text: `${exp.startDate || ''} - ${exp.endDate || 'Actual'}`, style: 'vDates' },
+          ...exp.achievements.map(a => ({ text: `✦ ${a}`, style: 'vAchievement' })),
+          '',
+        ]).flat(),
+        { text: 'Educación', style: 'vSection' },
+        ...education.map(edu => ({
+          text: `${edu.degree}\n${edu.institution} · ${edu.startDate} - ${edu.endDate}`,
+          style: 'vEdu',
+        })),
+        '',
+        { text: 'Stack Tecnológico', style: 'vSection' },
+        { text: allSkills.join('  ·  '), style: 'vSkills' },
+      ],
+      styles: {
+        vName: { fontSize: 24, bold: true, color: '#0f172a', margin: [0, 0, 0, 2] },
+        vSubtitle: { fontSize: 14, color: '#0891b2', margin: [0, 0, 0, 4] },
+        vContact: { fontSize: 9, color: '#64748b', margin: [0, 0, 0, 12] },
+        vSection: { fontSize: 13, bold: true, color: '#0f172a', margin: [0, 12, 0, 6] },
+        vParagraph: { fontSize: 9, lineHeight: 1.4, color: '#334155' },
+        vCompany: { fontSize: 11, bold: true, color: '#0f172a', margin: [0, 6, 0, 0] },
+        vRole: { fontSize: 10, color: '#0891b2', margin: [0, 0, 0, 2] },
+        vDates: { fontSize: 8, color: '#94a3b8', margin: [0, 0, 0, 3] },
+        vAchievement: { fontSize: 9, color: '#334155', margin: [0, 1, 0, 0] },
+        vEdu: { fontSize: 9, color: '#334155', margin: [0, 2, 0, 4], lineHeight: 1.4 },
+        vSkills: { fontSize: 9, color: '#0891b2', margin: [0, 4, 0, 0], lineHeight: 1.4 },
+      },
+      defaultStyle: { font: 'Helvetica' },
+    };
+  }
+
+  document.getElementById('download-ats')?.addEventListener('click', () => {
+    const personalInfo = { fullName: 'Gerson Francisco Morales Pérez', preferredName: 'Gerson Morales', jobTitle: 'Analista Programador', location: 'Guatemala', email: 'gfranciscomoralesp01@gmail.com', phone: '5752-3207', summary: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador.' };
+    const experience = [
+      { company: 'Procesadora de Tarjeta de Crédito Banrural', position: 'Analista Programador II', startDate: '2024-02', endDate: null, responsibilities: ['Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.', 'Desarrollar servicios backend y componentes para CRM y procesos transaccionales.', 'Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.'] },
+      { company: 'IT Profis / MAPFRE', position: 'Analista Programador Full Stack', startDate: '2021-07', endDate: '2024-02', responsibilities: ['Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.', 'Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.', 'Implementar soluciones de reportería integradas a procesos corporativos regionales.'] },
+      { company: 'Proyectos Independientes / PYMES', position: 'Desarrollador Full Stack', startDate: null, endDate: null, responsibilities: ['Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.', 'Desarrollar APIs y lógica de negocio para integración con servicios externos.', 'Modelar y administrar bases de datos relacionales SQL Server y MySQL.'] },
+    ];
+    const education = [
+      { degree: 'Maestría en Seguridad Informática', institution: 'Universidad Mariano Gálvez de Guatemala', status: 'Graduado', startDate: '2023', endDate: '2024' },
+      { degree: 'Ingeniería de Sistemas de la Información y Ciencias de la Computación', institution: 'Universidad Mariano Gálvez de Guatemala', status: 'Graduado', startDate: '2018', endDate: '2022' },
+    ];
+    const skills = { backend: ['.NET', '.NET Framework', 'C#', 'Java', 'Node.js'], frontend: ['React', 'Angular', 'JavaScript', 'TypeScript'], databases: ['SQL Server', 'Oracle Database', 'PL/SQL', 'MySQL'], architecture: ['Arquitectura de aplicaciones empresariales', 'Integración de sistemas', 'Desarrollo Full Stack'], security: ['Desarrollo seguro', 'Cumplimiento PCI', 'Controles alineados a ISO 27000'] };
+    const docDef = buildAtsPdf({ personalInfo, experience, education, skills });
+    pdfMake.createPdf(docDef).download(`CV_ATS_Gerson_Morales.pdf`);
+  });
+
+  document.getElementById('download-visual')?.addEventListener('click', () => {
+    const personalInfo = { fullName: 'Gerson Francisco Morales Pérez', preferredName: 'Gerson Morales', jobTitle: 'Analista Programador', location: 'Guatemala', email: 'gfranciscomoralesp01@gmail.com', phone: '5752-3207', summary: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador.' };
+    const experience = [
+      { company: 'Procesadora de Tarjeta de Crédito Banrural', position: 'Analista Programador II', startDate: '2024-02', endDate: null, current: true, achievements: ['Fortalecimiento de seguridad y cumplimiento regulatorio en plataforma de pagos.', 'Implementación de cifrado AES-256 para protección de datos financieros.', 'Desarrollo de servicios backend para ecosistema bancario con alta disponibilidad.'] },
+      { company: 'IT Profis / MAPFRE', position: 'Analista Programador Full Stack', startDate: '2021-07', endDate: '2024-02', current: false, achievements: ['Implementación de reportería automatizada con alcance regional multinacional.', 'Modernización de herramientas internas legacy hacia aplicaciones web.', 'Optimización de consultas PL/SQL que mejoraron tiempos de respuesta en reportes críticos.'] },
+      { company: 'Proyectos Independientes / PYMES', position: 'Desarrollador Full Stack', startDate: null, endDate: null, current: false, achievements: ['Entrega de soluciones tecnológicas para múltiples modelos de negocio.', 'Liderazgo del ciclo completo de desarrollo: requerimientos a producción.', 'Selección y adaptación de tecnologías según necesidad de cada proyecto.'] },
+    ];
+    const education = [
+      { degree: 'Maestría en Seguridad Informática', institution: 'Universidad Mariano Gálvez de Guatemala', startDate: '2023', endDate: '2024' },
+      { degree: 'Ingeniería de Sistemas de la Información y Ciencias de la Computación', institution: 'Universidad Mariano Gálvez de Guatemala', startDate: '2018', endDate: '2022' },
+    ];
+    const skills = { backend: ['.NET', '.NET Framework', 'C#', 'Java', 'Node.js'], frontend: ['React', 'Angular', 'JavaScript', 'TypeScript'], databases: ['SQL Server', 'Oracle Database', 'PL/SQL', 'MySQL'] };
+    const docDef = buildVisualPdf({ personalInfo, experience, education, skills });
+    pdfMake.createPdf(docDef).download(`CV_Visual_Gerson_Morales.pdf`);
+  });
+</script>
