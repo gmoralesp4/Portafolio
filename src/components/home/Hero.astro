@@ -74,42 +74,41 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
   </div>
 </section>
 
-<script>
+<script define:vars={{ cv }}>
   import pdfMake from 'pdfmake/build/pdfmake';
   import pdfFonts from 'pdfmake/build/vfs_fonts';
   pdfMake.vfs = pdfFonts.pdfMake ? pdfFonts.pdfMake.vfs : pdfFonts.vfs;
 
+  const { personalInfo, experience, education, skills } = cv;
+
   function buildHeroPdf() {
+    const allSkills = [
+      ...skills.backend, ...skills.frontend, ...skills.databases,
+      ...skills.architecture, ...skills.security, ...skills.cloud,
+      ...skills.methodologies, ...skills.domainKnowledge, ...skills.tools,
+    ];
     return {
       content: [
-        { text: 'GERSON FRANCISCO MORALES PÉREZ', style: 'name', alignment: 'center' },
-        { text: 'Analista Programador', style: 'subtitle', alignment: 'center' },
-        { text: 'Email: gfranciscomoralesp01@gmail.com | Tel: 5752-3207 | Guatemala', style: 'contact', alignment: 'center' },
+        { text: personalInfo.fullName.toUpperCase(), style: 'name', alignment: 'center' },
+        { text: personalInfo.jobTitle, style: 'subtitle', alignment: 'center' },
+        { text: `Email: ${personalInfo.email} | Tel: ${personalInfo.phone} | ${personalInfo.location}`, style: 'contact', alignment: 'center' },
         '',
         { text: 'RESUMEN PROFESIONAL', style: 'sectionHeader' },
-        { text: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador. Trabajo con .NET, Java, Node.js, Oracle y SQL Server en entornos regulados que exigen alta disponibilidad, seguridad y cumplimiento normativo. Mi enfoque está en la arquitectura de aplicaciones empresariales, la integración de sistemas mediante APIs REST y SOAP, y el desarrollo de servicios backend robustos.', style: 'paragraph' },
+        { text: personalInfo.summary, style: 'paragraph' },
         '',
         { text: 'EXPERIENCIA PROFESIONAL', style: 'sectionHeader' },
-        { text: 'Analista Programador II — Procesadora de Tarjeta de Crédito Banrural (Feb 2024 - Presente)', style: 'jobTitle' },
-        { text: '• Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.', style: 'bullet' },
-        { text: '• Desarrollar servicios backend y componentes para CRM y procesos transaccionales.', style: 'bullet' },
-        { text: '• Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.', style: 'bullet' },
-        '',
-        { text: 'Analista Programador Full Stack — IT Profis / MAPFRE (Jul 2021 - Feb 2024)', style: 'jobTitle' },
-        { text: '• Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.', style: 'bullet' },
-        { text: '• Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.', style: 'bullet' },
-        { text: '• Implementar soluciones de reportería integradas a procesos corporativos regionales.', style: 'bullet' },
-        '',
-        { text: 'Desarrollador Full Stack — Proyectos Independientes / PYMES', style: 'jobTitle' },
-        { text: '• Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.', style: 'bullet' },
-        { text: '• Desarrollar APIs y lógica de negocio para integración con servicios externos.', style: 'bullet' },
-        '',
+        ...experience.map(exp => [
+          { text: `${exp.position} — ${exp.company} (${exp.startDate || ''} - ${exp.current ? 'Presente' : exp.endDate})`, style: 'jobTitle' },
+          ...exp.responsibilities.map(r => ({ text: `• ${r}`, style: 'bullet' })),
+          '',
+        ]).flat(),
         { text: 'EDUCACIÓN', style: 'sectionHeader' },
-        { text: 'Maestría en Seguridad Informática — Universidad Mariano Gálvez de Guatemala (2023 - 2024)', style: 'eduLine' },
-        { text: 'Ingeniería de Sistemas — Universidad Mariano Gálvez de Guatemala (2018 - 2022)', style: 'eduLine' },
+        ...education.map(edu => [
+          { text: `${edu.degree} — ${edu.institution} (${edu.startDate} - ${edu.endDate})`, style: 'eduLine' },
+        ]),
         '',
         { text: 'HABILIDADES', style: 'sectionHeader' },
-        { text: '.NET | .NET Framework | C# | Java | Node.js | APIs REST | SOAP | Oracle | PL/SQL | SQL Server | MySQL | React | Angular | TypeScript | JavaScript | HTML5 | CSS3 | Git | Scrum', style: 'skills' },
+        { text: allSkills.join(' | '), style: 'skills' },
       ],
       styles: {
         name: { fontSize: 16, bold: true, margin: [0, 0, 0, 4] },
@@ -129,6 +128,6 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
   document.getElementById('hero-download-cv')?.addEventListener('click', (e) => {
     e.preventDefault();
     const docDef = buildHeroPdf();
-    pdfMake.createPdf(docDef).download('Gerson_Morales_CV.pdf');
+    pdfMake.createPdf(docDef).download(`${personalInfo.preferredName.replace(/\s+/g, '_')}_CV.pdf`);
   });
 </script>

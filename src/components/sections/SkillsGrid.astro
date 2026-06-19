@@ -7,8 +7,11 @@ const categoryIcons: Record<string, string> = {
   backend: '{ }',
   frontend: '</>',
   databases: 'DB',
+  security: '🔒',
   cloud: '☁',
   tools: '⚙',
+  domainKnowledge: '🏢',
+  softSkills: '💡',
 };
 ---
 
@@ -39,7 +42,7 @@ const categoryIcons: Record<string, string> = {
               <div class="flex flex-wrap gap-2">
                 {
                   group.items.map((skill) => (
-                    <Badge key={skill}>{skill}</Badge>
+                    <Badge>{skill}</Badge>
                   ))
                 }
               </div>

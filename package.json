@@ -10,12 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.0",
-    "@astrojs/tailwind": "^6.0.0",
     "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/tailwind": "^6.0.0",
+    "astro": "^5.0.0",
     "pdfmake": "^0.2.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.0"
   }

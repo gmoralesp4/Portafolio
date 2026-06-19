@@ -3,7 +3,6 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { getCV, pagePath } from '@lib/utils';
 import Badge from '@components/ui/Badge.astro';
 import ScrollReveal from '@components/ui/ScrollReveal.astro';
-import Button from '@components/ui/Button.astro';
 
 export async function getStaticPaths() {
   const cv = getCV();
@@ -33,7 +32,7 @@ const { project } = Astro.props;
           <p class="text-lg text-slate-400 max-w-2xl">{project.description}</p>
           <div class="flex flex-wrap gap-2 mt-6">
             {project.technologies.map((tech) => (
-              <Badge key={tech} variant="accent" size="md">{tech}</Badge>
+              <Badge variant="accent" size="md">{tech}</Badge>
             ))}
           </div>
         </ScrollReveal>

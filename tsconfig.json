@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@data/*": ["src/data/*"],
-      "@types/*": ["src/types/*"],
+      "@cvtypes/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@lib/*": ["src/lib/*"]

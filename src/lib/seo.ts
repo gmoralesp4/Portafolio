@@ -1,4 +1,4 @@
-import type { CVData } from '@types/cv';
+import type { CVData } from '@cvtypes/cv';
 
 export function generatePersonJsonLd(cv: CVData): string {
   const { personalInfo, skills, education } = cv;
@@ -68,7 +68,7 @@ export interface PageSEO {
 }
 
 export function getPageSEO(path: string, cv: CVData): PageSEO {
-  const { personalInfo, seo } = cv;
+  const { personalInfo } = cv;
   const baseTitle = `${personalInfo.preferredName} — ${personalInfo.jobTitle}`;
 
   const pages: Record<string, PageSEO> = {

@@ -1,6 +1,6 @@
-import type { SkillCategory, SkillGroup } from '@types/cv';
+import type { SkillCategory, SkillGroup } from '@cvtypes/cv';
 import cvData from '@data/cv.json';
-import type { CVData } from '@types/cv';
+import type { CVData } from '@cvtypes/cv';
 
 const cv = cvData as CVData;
 
@@ -45,8 +45,8 @@ export function getDateRange(start: string | null, end: string | null, current: 
 export function getYearsExperience(startDate: string | null, endDate: string | null): number {
   if (!startDate) return 0;
   const [startYear] = startDate.split('-').map(Number);
-  const endYear = endDate ? parseInt(endDate.split('-')[0]!) : new Date().getFullYear();
-  return endYear - startYear;
+  const endYear = endDate ? Number(endDate.split('-')[0]) : new Date().getFullYear();
+  return endYear - (startYear ?? 0);
 }
 
 export function getTotalYearsExperience(): number {
@@ -61,6 +61,9 @@ export const skillGroups: SkillGroup[] = [
   { id: 'backend' as SkillCategory, label: 'Backend', items: [...cv.skills.backend, ...cv.skills.architecture] },
   { id: 'frontend' as SkillCategory, label: 'Frontend', items: cv.skills.frontend },
   { id: 'databases' as SkillCategory, label: 'Bases de Datos', items: cv.skills.databases },
+  { id: 'security' as SkillCategory, label: 'Seguridad', items: cv.skills.security },
   { id: 'cloud' as SkillCategory, label: 'Cloud / DevOps', items: [...cv.skills.cloud, ...cv.skills.methodologies] },
   { id: 'tools' as SkillCategory, label: 'Herramientas', items: cv.skills.tools },
+  { id: 'domainKnowledge' as SkillCategory, label: 'Conocimiento del Dominio', items: cv.skills.domainKnowledge },
+  { id: 'softSkills' as SkillCategory, label: 'Habilidades Blandas', items: cv.skills.softSkills },
 ];

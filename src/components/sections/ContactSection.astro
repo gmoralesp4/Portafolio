@@ -1,7 +1,6 @@
 ---
-import { getCV, pagePath } from '@lib/utils';
+import { getCV } from '@lib/utils';
 import ScrollReveal from '@components/ui/ScrollReveal.astro';
-import Button from '@components/ui/Button.astro';
 
 const cv = getCV();
 const { personalInfo } = cv;
@@ -66,19 +65,17 @@ const { personalInfo } = cv;
   </div>
 </section>
 
-<script>
+<script define:vars={{ cv }}>
   import pdfMake from 'pdfmake/build/pdfmake';
   import pdfFonts from 'pdfmake/build/vfs_fonts';
   pdfMake.vfs = pdfFonts.pdfMake ? pdfFonts.pdfMake.vfs : pdfFonts.vfs;
 
-  function buildAtsPdf(cv) {
-    const { personalInfo, experience, education, skills } = cv;
+  const { personalInfo, experience, education, skills } = cv;
+
+  function buildAtsPdf() {
     const allSkills = [
-      ...skills.backend,
-      ...skills.frontend,
-      ...skills.databases,
-      ...skills.architecture,
-      ...skills.security,
+      ...skills.backend, ...skills.frontend, ...skills.databases,
+      ...skills.architecture, ...skills.security,
     ];
 
     return {
@@ -93,7 +90,7 @@ const { personalInfo } = cv;
         { text: 'EXPERIENCIA PROFESIONAL', style: 'sectionHeader' },
         ...experience.map(exp => [
           { text: exp.position, style: 'jobTitle' },
-          { text: `${exp.company} | ${exp.startDate || ''} - ${exp.endDate || 'Presente'}`, style: 'company' },
+          { text: `${exp.company} | ${exp.startDate || ''} - ${exp.current ? 'Presente' : exp.endDate}`, style: 'company' },
           ...exp.responsibilities.map(r => ({ text: `• ${r}`, style: 'bullet' })),
           '',
         ]).flat(),
@@ -123,8 +120,7 @@ const { personalInfo } = cv;
     };
   }
 
-  function buildVisualPdf(cv) {
-    const { personalInfo, experience, education, skills } = cv;
+  function buildVisualPdf() {
     const allSkills = [
       ...skills.backend.slice(0, 4),
       ...skills.frontend.slice(0, 3),
@@ -141,10 +137,10 @@ const { personalInfo } = cv;
         { text: personalInfo.summary, style: 'vParagraph' },
         '',
         { text: 'Experiencia', style: 'vSection' },
-        ...experience.map(exp => [
+        ...experience.filter(exp => exp.achievements.length > 0).map(exp => [
           { text: exp.company, style: 'vCompany' },
           { text: exp.position, style: 'vRole' },
-          { text: `${exp.startDate || ''} - ${exp.endDate || 'Actual'}`, style: 'vDates' },
+          { text: `${exp.startDate || ''} - ${exp.current ? 'Actual' : exp.endDate}`, style: 'vDates' },
           ...exp.achievements.map(a => ({ text: `✦ ${a}`, style: 'vAchievement' })),
           '',
         ]).flat(),
@@ -175,34 +171,10 @@ const { personalInfo } = cv;
   }
 
   document.getElementById('download-ats')?.addEventListener('click', () => {
-    const personalInfo = { fullName: 'Gerson Francisco Morales Pérez', preferredName: 'Gerson Morales', jobTitle: 'Analista Programador', location: 'Guatemala', email: 'gfranciscomoralesp01@gmail.com', phone: '5752-3207', summary: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador.' };
-    const experience = [
-      { company: 'Procesadora de Tarjeta de Crédito Banrural', position: 'Analista Programador II', startDate: '2024-02', endDate: null, responsibilities: ['Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.', 'Desarrollar servicios backend y componentes para CRM y procesos transaccionales.', 'Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.'] },
-      { company: 'IT Profis / MAPFRE', position: 'Analista Programador Full Stack', startDate: '2021-07', endDate: '2024-02', responsibilities: ['Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.', 'Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.', 'Implementar soluciones de reportería integradas a procesos corporativos regionales.'] },
-      { company: 'Proyectos Independientes / PYMES', position: 'Desarrollador Full Stack', startDate: null, endDate: null, responsibilities: ['Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.', 'Desarrollar APIs y lógica de negocio para integración con servicios externos.', 'Modelar y administrar bases de datos relacionales SQL Server y MySQL.'] },
-    ];
-    const education = [
-      { degree: 'Maestría en Seguridad Informática', institution: 'Universidad Mariano Gálvez de Guatemala', status: 'Graduado', startDate: '2023', endDate: '2024' },
-      { degree: 'Ingeniería de Sistemas de la Información y Ciencias de la Computación', institution: 'Universidad Mariano Gálvez de Guatemala', status: 'Graduado', startDate: '2018', endDate: '2022' },
-    ];
-    const skills = { backend: ['.NET', '.NET Framework', 'C#', 'Java', 'Node.js'], frontend: ['React', 'Angular', 'JavaScript', 'TypeScript'], databases: ['SQL Server', 'Oracle Database', 'PL/SQL', 'MySQL'], architecture: ['Arquitectura de aplicaciones empresariales', 'Integración de sistemas', 'Desarrollo Full Stack'], security: ['Desarrollo seguro', 'Cumplimiento PCI', 'Controles alineados a ISO 27000'] };
-    const docDef = buildAtsPdf({ personalInfo, experience, education, skills });
-    pdfMake.createPdf(docDef).download(`CV_ATS_Gerson_Morales.pdf`);
+    pdfMake.createPdf(buildAtsPdf()).download(`CV_ATS_${personalInfo.preferredName.replace(/\s+/g, '_')}.pdf`);
   });
 
   document.getElementById('download-visual')?.addEventListener('click', () => {
-    const personalInfo = { fullName: 'Gerson Francisco Morales Pérez', preferredName: 'Gerson Morales', jobTitle: 'Analista Programador', location: 'Guatemala', email: 'gfranciscomoralesp01@gmail.com', phone: '5752-3207', summary: 'Ingeniero de software con experiencia diseñando y construyendo soluciones backend para los sectores financiero y asegurador.' };
-    const experience = [
-      { company: 'Procesadora de Tarjeta de Crédito Banrural', position: 'Analista Programador II', startDate: '2024-02', endDate: null, current: true, achievements: ['Fortalecimiento de seguridad y cumplimiento regulatorio en plataforma de pagos.', 'Implementación de cifrado AES-256 para protección de datos financieros.', 'Desarrollo de servicios backend para ecosistema bancario con alta disponibilidad.'] },
-      { company: 'IT Profis / MAPFRE', position: 'Analista Programador Full Stack', startDate: '2021-07', endDate: '2024-02', current: false, achievements: ['Implementación de reportería automatizada con alcance regional multinacional.', 'Modernización de herramientas internas legacy hacia aplicaciones web.', 'Optimización de consultas PL/SQL que mejoraron tiempos de respuesta en reportes críticos.'] },
-      { company: 'Proyectos Independientes / PYMES', position: 'Desarrollador Full Stack', startDate: null, endDate: null, current: false, achievements: ['Entrega de soluciones tecnológicas para múltiples modelos de negocio.', 'Liderazgo del ciclo completo de desarrollo: requerimientos a producción.', 'Selección y adaptación de tecnologías según necesidad de cada proyecto.'] },
-    ];
-    const education = [
-      { degree: 'Maestría en Seguridad Informática', institution: 'Universidad Mariano Gálvez de Guatemala', startDate: '2023', endDate: '2024' },
-      { degree: 'Ingeniería de Sistemas de la Información y Ciencias de la Computación', institution: 'Universidad Mariano Gálvez de Guatemala', startDate: '2018', endDate: '2022' },
-    ];
-    const skills = { backend: ['.NET', '.NET Framework', 'C#', 'Java', 'Node.js'], frontend: ['React', 'Angular', 'JavaScript', 'TypeScript'], databases: ['SQL Server', 'Oracle Database', 'PL/SQL', 'MySQL'] };
-    const docDef = buildVisualPdf({ personalInfo, experience, education, skills });
-    pdfMake.createPdf(docDef).download(`CV_Visual_Gerson_Morales.pdf`);
+    pdfMake.createPdf(buildVisualPdf()).download(`CV_Visual_${personalInfo.preferredName.replace(/\s+/g, '_')}.pdf`);
   });
 </script>
