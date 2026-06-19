@@ -66,126 +66,128 @@ function line(text, style) {
   return { text, style: style || 'body' };
 }
 
-// --- ATS PDF ---
+// --- ATS PDF (compacto, 1 página, compatible ATS) ---
 const atsDef = {
   pageSize: 'LETTER',
-  pageMargins: [54, 54, 54, 54],
+  pageMargins: [36, 36, 36, 36],
   content: [
     // 1. HEADER
     { text: personalInfo.fullName.toUpperCase(), style: 'name' },
-    { text: 'Software Engineer', style: 'jobTitle' },
+    { text: 'Software Engineer', style: 'jobTitleLine' },
     {
       text: [
-        { text: personalInfo.email, color: '#2563eb' },
-        { text: '  |  ', color: '#94a3b8' },
-        { text: personalInfo.phone, color: '#334155' },
-        { text: '  |  ', color: '#94a3b8' },
-        { text: personalInfo.location, color: '#334155' },
-        { text: '  |  ', color: '#94a3b8' },
-        { text: personalInfo.linkedin, color: '#2563eb', link: personalInfo.linkedin },
+        { text: personalInfo.email },
+        { text: '  |  ' },
+        { text: personalInfo.phone },
+        { text: '  |  ' },
+        { text: personalInfo.location },
+        { text: '  |  ' },
+        { text: 'linkedin.com/in/gerson-morales-1a3b5b25b' },
       ],
       style: 'contact',
     },
-    { text: '\n' },
 
     // 2. PROFESSIONAL SUMMARY
     section('RESUMEN PROFESIONAL'),
-    { text: personalInfo.summary, style: 'body' },
-    { text: '\n' },
+    {
+      text: 'Ingeniero de software Full Stack con experiencia en aplicaciones empresariales para los sectores financiero y asegurador. Diseño y construcción de APIs REST/SOAP, servicios backend y bases de datos relacionales (Oracle, SQL Server). Aplicación de estándares PCI DSS e ISO 27000. Maestría en Seguridad Informática e Ingeniería de Sistemas. Certificado Scrum Fundamentals. AWS Cloud Practitioner (en preparación).',
+      style: 'body',
+    },
 
     // 3. SKILLS
     section('HABILIDADES'),
-    {
-      ul: [
-        ...skills.backend.map(s => ({ text: [{ text: 'Backend: ', bold: true }, s], style: 'skill' })),
-        ...skills.frontend.map(s => ({ text: [{ text: 'Frontend: ', bold: true }, s], style: 'skill' })),
-        ...skills.databases.map(s => ({ text: [{ text: 'Bases de datos: ', bold: true }, s], style: 'skill' })),
-        ...skills.architecture.map(s => ({ text: [{ text: 'Arquitectura: ', bold: true }, s], style: 'skill' })),
-        ...skills.security.map(s => ({ text: [{ text: 'Seguridad: ', bold: true }, s], style: 'skill' })),
-        ...skills.cloud.map(s => ({ text: [{ text: 'Cloud: ', bold: true }, s], style: 'skill' })),
-        ...skills.methodologies.map(s => ({ text: [{ text: 'Metodologías: ', bold: true }, s], style: 'skill' })),
-      ],
-      type: 'none',
-      margin: [0, 0, 0, 4],
-    },
-    { text: '\n' },
+    { text: [{ text: 'Backend: ', bold: true }, skills.backend.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Frontend: ', bold: true }, skills.frontend.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Bases de datos: ', bold: true }, skills.databases.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Arquitectura: ', bold: true }, skills.architecture.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Seguridad: ', bold: true }, skills.security.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Cloud: ', bold: true }, skills.cloud.join(' · ')], style: 'skillLine' },
+    { text: [{ text: 'Metodologías: ', bold: true }, skills.methodologies.join(' · ')], style: 'skillLine' },
 
     // 4. TECHNOLOGIES
     section('TECNOLOGÍAS'),
     {
-      text: [
-        ...experience.flatMap(e => e.technologies),
-        ...(skills.tools || []),
-      ].filter((v, i, a) => a.indexOf(v) === i).join('  |  '),
+      text: 'Backend: .NET · .NET Framework · C# · Java · Node.js · ASP.NET · APIs REST · SOAP · Servicios Windows  |  Frontend: React · Angular · JavaScript · TypeScript · HTML5 · CSS3  |  Bases de datos: SQL Server · Oracle · PL/SQL · MySQL  |  Seguridad: AES-256  |  Herramientas: Git · Postman · Visual Studio · VS Code · SSMS · Oracle SQL Developer',
       style: 'body',
     },
-    { text: '\n' },
 
     // 5. EXPERIENCE
     section('EXPERIENCIA PROFESIONAL'),
-    ...experience.map(exp => [
-      { text: exp.position, style: 'expTitle' },
-      { text: `${exp.company}  |  ${exp.startDate || ''} - ${exp.current ? 'Presente' : exp.endDate}`, style: 'expCompany' },
-      { text: exp.description, style: 'body', margin: [0, 2, 0, 4] },
-      { text: 'Responsabilidades:', style: 'label' },
-      ...exp.responsibilities.map(r => ({ text: `• ${r}`, style: 'bullet', margin: [6, 1, 0, 1] })),
-      exp.achievements.length > 0 ? { text: 'Logros:', style: 'label', margin: [0, 4, 0, 1] } : null,
-      ...exp.achievements.map(a => ({ text: `• ${a}`, style: 'bullet', margin: [6, 1, 0, 1] })),
-      { text: `Tecnologías: ${exp.technologies.join(', ')}`, style: 'techLine', margin: [0, 4, 0, 2] },
-      { text: '\n' },
-    ]).flat().filter(Boolean),
+
+    // Exp 1
+    { text: [{ text: 'Analista Programador II', bold: true }, { text: '  |  Procesadora de Tarjeta de Crédito Banrural  |  2024-02 - Presente', color: '#334155' }], style: 'expHeader' },
+    { text: 'Desarrollo de servicios backend y APIs para plataforma bancaria y procesamiento de pagos con controles de seguridad PCI DSS e ISO 27000.', style: 'body', margin: [0, 1, 0, 2] },
+    '• Desarrollo de servicios backend para CRM y componentes transaccionales.',
+    '• Diseño e integración de APIs REST y SOAP entre sistemas financieros internos.',
+    '• Administración y optimización de bases de datos SQL Server.',
+    '• Aplicación de controles de seguridad alineados a PCI DSS e ISO 27000.',
+    { text: 'Logros: Implementación de cifrado AES-256 para datos financieros. Servicios backend para plataforma de pagos con alta disponibilidad. Coordinación con stakeholders internacionales.', style: 'achievementLine' },
+    { text: 'Tecnologías: .NET · .NET Framework · C# · SQL Server · APIs REST · SOAP · Windows Services · AES-256', style: 'techLine' },
+    '',
+
+    // Exp 2
+    { text: [{ text: 'Analista Programador Full Stack', bold: true }, { text: '  |  IT Profis / MAPFRE  |  2021-07 - 2024-02', color: '#334155' }], style: 'expHeader' },
+    { text: 'Diseño, desarrollo y mantenimiento de aplicaciones web empresariales para operaciones regionales de aseguradora sobre ecosistema Oracle.', style: 'body', margin: [0, 1, 0, 2] },
+    '• Desarrollo y mantenimiento de aplicaciones web Full Stack sobre Oracle Database.',
+    '• Optimización de componentes PL/SQL para reportería regional.',
+    '• Implementación de soluciones de reportería integradas a procesos corporativos.',
+    '• Análisis de requerimientos y transformación en soluciones tecnológicas.',
+    { text: 'Logros: Reportería automatizada con alcance regional multinacional. Modernización de herramientas legacy a web. Optimización de consultas PL/SQL con mejora en tiempos de respuesta.', style: 'achievementLine' },
+    { text: 'Tecnologías: Oracle · PL/SQL · Java · ASP.NET · JavaScript · SQL Server · MySQL · HTML5 · CSS3', style: 'techLine' },
+    '',
+
+    // Exp 3
+    { text: [{ text: 'Desarrollador Full Stack', bold: true }, { text: '  |  Proyectos Independientes / PYMES', color: '#334155' }], style: 'expHeader' },
+    { text: 'Desarrollo de aplicaciones web Full Stack para pequeñas y medianas empresas: requerimientos, construcción, despliegue y soporte técnico.', style: 'body', margin: [0, 1, 0, 2] },
+    '• Diseño y desarrollo de aplicaciones web con arquitectura Full Stack.',
+    '• Desarrollo de interfaces con React, Angular y TypeScript.',
+    '• Desarrollo de APIs y lógica de negocio para integración con servicios externos.',
+    '• Modelado y administración de bases de datos SQL Server y MySQL.',
+    { text: 'Logros: Ciclo completo de desarrollo (análisis a producción). Soluciones para múltiples modelos de negocio. Selección de stack técnico según requerimientos.', style: 'achievementLine' },
+    { text: 'Tecnologías: React · Angular · Node.js · JavaScript · TypeScript · SQL Server · MySQL', style: 'techLine' },
+    '',
 
     // 6. EDUCATION
     section('EDUCACIÓN'),
-    ...education.map(edu => [
-      { text: edu.degree, style: 'eduTitle' },
-      { text: `${edu.institution}  |  ${edu.startDate} - ${edu.endDate}`, style: 'eduDetail' },
-      { text: `Estado: ${edu.status}`, style: 'eduDetail' },
-      { text: '\n' },
-    ]).flat(),
+    ...education.map(edu => ({
+      text: `${edu.degree}  —  ${edu.institution}  |  ${edu.startDate} - ${edu.endDate}  (${edu.status})`,
+      style: 'eduLine',
+    })),
+    '',
 
     // 7. CERTIFICATIONS
-    certifications.length > 0 ? section('CERTIFICACIONES') : null,
+    section('CERTIFICACIONES'),
     ...(certifications || []).map(cert => ({
-      text: `• ${cert.name} — ${cert.issuer} (${cert.status})`,
-      style: 'bullet',
-      margin: [0, 1, 0, 1],
+      text: `Obtenidas: ${cert.name} — ${cert.issuer}`,
+      style: 'certLine',
     })),
     ...(certificationsInProgress || []).map(cert => ({
-      text: `• ${cert.name} — ${cert.issuer} (${cert.status})`,
-      style: 'bullet',
-      margin: [0, 1, 0, 1],
+      text: `En preparación: ${cert.name} — ${cert.issuer}`,
+      style: 'certLine',
     })),
-    (certifications?.length || certificationsInProgress?.length) > 0 ? { text: '\n' } : null,
+    '',
 
     // 8. LANGUAGES
     section('IDIOMAS'),
-    ...languages.map(lang => ({
-      text: `${lang.language}: ${lang.level}`,
+    {
+      text: languages.map(l => `${l.language} — ${l.level}`).join('  |  '),
       style: 'body',
-    })),
-    { text: '\n' },
-
-    // 9. ADDITIONAL INFO
-    continuousLearning ? section('INFORMACIÓN ADICIONAL') : null,
-    continuousLearning ? { text: continuousLearning.description, style: 'body' } : null,
+    },
   ].filter(Boolean),
   styles: {
-    name: { fontSize: 16, bold: true, margin: [0, 0, 0, 2] },
-    jobTitle: { fontSize: 12, margin: [0, 0, 0, 6], color: '#2563eb' },
-    contact: { fontSize: 9, margin: [0, 0, 0, 2], lineHeight: 1.4 },
-    sectionHeader: { fontSize: 11, bold: true, margin: [0, 10, 0, 4], color: '#0f172a' },
-    body: { fontSize: 9, lineHeight: 1.35, margin: [0, 1, 0, 1] },
-    skill: { fontSize: 9, lineHeight: 1.3, margin: [0, 0, 0, 0] },
-    label: { fontSize: 9, bold: true, margin: [0, 2, 0, 1] },
-    bullet: { fontSize: 9, lineHeight: 1.3 },
-    expTitle: { fontSize: 10, bold: true, margin: [0, 4, 0, 1] },
-    expCompany: { fontSize: 9, color: '#475569', margin: [0, 0, 0, 2] },
-    techLine: { fontSize: 8, color: '#475569' },
-    eduTitle: { fontSize: 10, bold: true, margin: [0, 2, 0, 1] },
-    eduDetail: { fontSize: 9, color: '#475569', margin: [0, 0, 0, 1] },
+    name: { fontSize: 14, bold: true, margin: [0, 0, 0, 1] },
+    jobTitleLine: { fontSize: 10, margin: [0, 0, 0, 3], color: '#1e40af' },
+    contact: { fontSize: 7.5, margin: [0, 0, 0, 6], color: '#334155' },
+    sectionHeader: { fontSize: 9.5, bold: true, margin: [0, 7, 0, 3], color: '#0f172a' },
+    body: { fontSize: 7.5, lineHeight: 1.3, margin: [0, 0, 0, 1] },
+    skillLine: { fontSize: 7.5, lineHeight: 1.25, margin: [0, 0, 0, 0] },
+    expHeader: { fontSize: 8, margin: [0, 3, 0, 0] },
+    achievementLine: { fontSize: 7.5, margin: [2, 1, 0, 1], color: '#1e293b' },
+    techLine: { fontSize: 7, color: '#475569', margin: [2, 0, 0, 0] },
+    eduLine: { fontSize: 7.5, margin: [0, 1, 0, 0] },
+    certLine: { fontSize: 7.5, margin: [0, 1, 0, 0] },
   },
-  defaultStyle: { font: 'Roboto', color: '#0f172a', fontSize: 9 },
+  defaultStyle: { font: 'Roboto', color: '#0f172a', fontSize: 7.5 },
 };
 
 // --- Visual PDF ---
