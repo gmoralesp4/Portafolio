@@ -50,10 +50,9 @@
       "Atención a clientes internacionales"
     ],
     "tools": [
-      "Git", "Postman", "JIRA", "Azure DevOps",
+      "Git", "Postman",
       "Visual Studio", "Visual Studio Code",
-      "SQL Server Management Studio", "Oracle SQL Developer",
-      "SonarQube", "Docker (en adopción)"
+      "SQL Server Management Studio", "Oracle SQL Developer"
     ],
     "softSkills": [
       "Liderazgo técnico", "Pensamiento analítico",

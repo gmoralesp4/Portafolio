@@ -73,8 +73,8 @@ export function getPageSEO(path: string, cv: CVData): PageSEO {
 
   const pages: Record<string, PageSEO> = {
     '/': {
-      title: `${personalInfo.preferredName} — ${personalInfo.jobTitle} | Backend Engineer .NET Java Oracle`,
-      description: `Backend Engineer con experiencia en sector financiero y asegurador. .NET, Java, Oracle, SQL Server, APIs REST, PCI DSS, ISO 27000. ${personalInfo.location}.`,
+      title: `${personalInfo.preferredName} — ${personalInfo.jobTitle} | Software Engineer Full Stack .NET Java Oracle`,
+      description: `Software Engineer Full Stack con experiencia en sector financiero y asegurador. .NET, Java, Oracle, SQL Server, APIs REST, PCI DSS, ISO 27000. ${personalInfo.location}.`,
     },
     '/about': {
       title: `Sobre Mí — ${personalInfo.preferredName} | ${personalInfo.jobTitle}`,
@@ -98,7 +98,7 @@ export function getPageSEO(path: string, cv: CVData): PageSEO {
     },
     '/contact': {
       title: `Contacto — ${personalInfo.preferredName}`,
-      description: `Disponible para oportunidades como Backend Engineer. Email: ${personalInfo.email} | LinkedIn.`,
+      description: `Disponible para oportunidades como Software Engineer Full Stack. Email: ${personalInfo.email} | LinkedIn.`,
     },
     '/blog': {
       title: `Blog — ${personalInfo.preferredName}`,

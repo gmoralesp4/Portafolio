@@ -20,7 +20,7 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
         <div class="space-y-4">
           <div class="flex items-center gap-2 text-cyan-400 text-sm font-mono">
             <span class="w-8 h-px bg-cyan-400/50" />
-            <span>Backend Engineer</span>
+            <span>Ingeniero de Software Full Stack</span>
           </div>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-50 leading-tight">
             {personalInfo.fullName}
@@ -37,7 +37,7 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
         </div>
 
         <div class="flex flex-wrap gap-3">
-          <Badge variant="accent" size="md">+{totalYears} años experiencia</Badge>
+          <Badge variant="accent" size="md">{totalYears} años experiencia</Badge>
           <Badge variant="accent" size="md">.NET / Java / Node.js</Badge>
           <Badge variant="accent" size="md">Oracle · SQL Server</Badge>
           <Badge variant="accent" size="md">APIs REST · SOAP</Badge>
@@ -54,10 +54,30 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Contacto
           </Button>
-          <a href={assetPath('/cv/Gerson_Morales_CV_ATS.pdf')} download="Gerson_Morales_CV_ATS.pdf" class="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:ring-offset-2 focus:ring-offset-surface-950 px-6 py-3 text-base gap-2.5 bg-cyan-500 text-slate-950 border border-cyan-400/50 hover:bg-cyan-400 hover:shadow-xl hover:shadow-cyan-400/25 hover:scale-105 active:scale-100">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Descargar CV
-          </a>
+          <details class="relative inline-flex download-dropdown">
+            <summary class="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:ring-offset-2 focus:ring-offset-surface-950 px-6 py-3 text-base gap-2 bg-cyan-500 text-slate-950 border border-cyan-400/50 hover:bg-cyan-400 hover:shadow-xl hover:shadow-cyan-400/25 hover:scale-105 active:scale-100 cursor-pointer list-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Descargar CV
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="absolute top-full left-0 mt-2 w-full min-w-[220px] bg-surface-900 border border-slate-700/50 rounded-lg shadow-2xl shadow-black/50 overflow-hidden z-50">
+              <a href={assetPath('/cv/Gerson_Morales_CV_ATS.pdf')} download="Gerson_Morales_CV_ATS.pdf" class="flex items-center gap-3 px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="flex flex-col">
+                  <span class="font-medium">CV ATS</span>
+                  <span class="text-xs text-slate-500">Optimizado para sistemas ATS</span>
+                </div>
+              </a>
+              <div class="h-px bg-slate-700/30 mx-3" />
+              <a href={assetPath('/cv/Gerson_Morales_CV_Visual.pdf')} download="Gerson_Morales_CV_Visual.pdf" class="flex items-center gap-3 px-4 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg>
+                <div class="flex flex-col">
+                  <span class="font-medium">CV Visual</span>
+                  <span class="text-xs text-slate-500">Diseño moderno para revisión</span>
+                </div>
+              </a>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -74,4 +94,14 @@ const summaryFirstPara = personalInfo.summary.split('\n\n')[0] || personalInfo.s
   </div>
 </section>
 
+<style>
+  .download-dropdown summary::marker,
+  .download-dropdown summary::-webkit-details-marker {
+    display: none;
+    content: '';
+  }
+  .download-dropdown[open] summary svg:last-child {
+    transform: rotate(180deg);
+  }
+</style>
 
