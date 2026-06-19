@@ -9,7 +9,7 @@
     "website": "https://gmoralesp4.github.io/Portafolio",
     "linkedin": "https://www.linkedin.com/in/gerson-morales-1a3b5b25b",
     "github": "https://github.com/gmoralesp4",
-    "summary": "He pasado los últimos años construyendo software backend para banca y seguros. Mi trabajo diario implica diseñar APIs, servicios y bases de datos que procesan transacciones financieras, generan reportes regionales y mantienen la información protegida bajo estándares PCI DSS e ISO 27000.\n\nTrabajo con .NET, Java, Node.js, Oracle y SQL Server. Prefiero arquitecturas modulares, código mantenible y pruebas que respalden cada entrega. Me involucro desde la etapa de análisis —entiendo el problema antes de escribir la primera línea— hasta el despliegue y la operación.\n\nCreo que el software bien construido se nota en producción: responde rápido, no falla en horario crítico y se puede modificar sin romper todo. Ese es el estándar que aplico en cada proyecto.\n\nActualmente estoy profundizando en cloud computing (AWS) y arquitectura de sistemas distribuidos. También tengo una Maestría en Seguridad Informática, lo que me permite abordar el desarrollo con una visión de protección de datos desde el diseño."
+    "summary": "Ingeniero de software Full Stack con experiencia en el desarrollo e implementación de aplicaciones empresariales para los sectores financiero y asegurador. Participación en proyectos de diseño y construcción de APIs, servicios backend, bases de datos relacionales e integración de sistemas.\n\nExperiencia en arquitectura de aplicaciones empresariales, desarrollo de servicios REST y SOAP, y administración de bases de datos Oracle y SQL Server. Conocimiento en estándares de seguridad PCI DSS e ISO 27000 aplicados al desarrollo de software.\n\nMaestría en Seguridad Informática. Formación en Ingeniería de Sistemas. Certificación Scrum Fundamentals.\n\nActualmente en preparación para certificación AWS Cloud Practitioner. Fortalecimiento de conocimientos en cloud computing y buenas prácticas de ingeniería."
   },
   "skills": {
     "backend": [
@@ -71,19 +71,18 @@
       "endDate": null,
       "current": true,
       "location": "Guatemala",
-      "description": "Diseño e implementación de servicios backend y APIs para plataforma bancaria y procesamiento de pagos, con énfasis en seguridad, cumplimiento normativo y protección de datos financieros.",
+      "description": "Desarrollo e implementación de servicios backend y APIs para plataforma bancaria y procesamiento de pagos. Aplicación de controles de seguridad y cumplimiento normativo en sistemas de carácter financiero.",
       "responsibilities": [
-        "Implementar controles de seguridad alineados a PCI DSS e ISO 27000 en aplicaciones bancarias.",
-        "Desarrollar servicios backend y componentes para CRM y procesos transaccionales.",
-        "Diseñar e integrar APIs REST y SOAP entre sistemas financieros internos.",
-        "Administrar y optimizar bases de datos SQL Server para aplicaciones de carácter sensible.",
-        "Analizar requerimientos y coordinar entregas con clientes internacionales."
+        "Desarrollo e implementación de servicios backend para CRM y componentes transaccionales.",
+        "Diseño e integración de APIs REST y SOAP entre sistemas financieros internos.",
+        "Administración y optimización de bases de datos SQL Server para aplicaciones sensibles.",
+        "Aplicación de controles de seguridad alineados a PCI DSS e ISO 27000.",
+        "Análisis de requerimientos y coordinación de entregas con clientes internacionales."
       ],
       "achievements": [
-        "Fortalecimiento de seguridad y cumplimiento regulatorio en plataforma de pagos.",
         "Implementación de cifrado AES-256 para protección de datos financieros.",
-        "Desarrollo de servicios backend para ecosistema bancario con alta disponibilidad.",
-        "Coordinación directa con stakeholders internacionales para requerimientos críticos."
+        "Desarrollo de servicios backend para plataforma de pagos con alta disponibilidad.",
+        "Coordinación con stakeholders internacionales para requerimientos críticos."
       ],
       "technologies": [
         ".NET", ".NET Framework", "C#", "SQL Server",
@@ -99,18 +98,18 @@
       "endDate": "2024-02",
       "current": false,
       "location": "Guatemala",
-      "description": "Diseño, desarrollo y mantenimiento de aplicaciones web empresariales para operaciones regionales de la aseguradora, sobre ecosistema Oracle con frontend en ASP.NET y Java.",
+      "description": "Participación en diseño, desarrollo y mantenimiento de aplicaciones web empresariales para operaciones regionales de aseguradora. Desarrollo sobre ecosistema Oracle con frontend en ASP.NET y Java.",
       "responsibilities": [
-        "Desarrollar y mantener aplicaciones web empresariales Full Stack sobre Oracle Database.",
-        "Optimizar componentes PL/SQL para reportería regional y procesos transaccionales.",
-        "Transformar requerimientos funcionales en soluciones tecnológicas escalables.",
-        "Implementar soluciones de reportería integradas a procesos corporativos regionales.",
-        "Gestionar despliegues y mantenimiento evolutivo de sistemas críticos."
+        "Desarrollo y mantenimiento de aplicaciones web empresariales Full Stack sobre Oracle Database.",
+        "Optimización de componentes PL/SQL para reportería regional y procesos transaccionales.",
+        "Implementación de soluciones de reportería integradas a procesos corporativos regionales.",
+        "Gestión de despliegues y mantenimiento evolutivo de sistemas críticos.",
+        "Análisis de requerimientos funcionales y transformación en soluciones tecnológicas."
       ],
       "achievements": [
         "Implementación de reportería automatizada con alcance regional multinacional.",
         "Modernización de herramientas internas legacy hacia aplicaciones web.",
-        "Optimización de consultas PL/SQL que mejoraron tiempos de respuesta en reportes críticos."
+        "Optimización de consultas PL/SQL con mejora en tiempos de respuesta en reportes críticos."
       ],
       "technologies": [
         "Oracle", "PL/SQL", "Java", "ASP.NET",
@@ -125,18 +124,18 @@
       "endDate": null,
       "current": false,
       "location": "Guatemala",
-      "description": "Desarrollo de soluciones web Full Stack para pequeñas y medianas empresas, abarcando desde el levantamiento de requerimientos hasta el despliegue y soporte técnico.",
+      "description": "Desarrollo de aplicaciones web Full Stack para pequeñas y medianas empresas. Participación en levantamiento de requerimientos, construcción, despliegue y soporte técnico.",
       "responsibilities": [
-        "Diseñar y desarrollar aplicaciones web con arquitectura Full Stack.",
-        "Construir interfaces funcionales con React, Angular y TypeScript.",
-        "Desarrollar APIs y lógica de negocio para integración con servicios externos.",
-        "Modelar y administrar bases de datos relacionales SQL Server y MySQL.",
-        "Definir stack técnico y entregar soluciones adaptadas al cliente."
+        "Diseño y desarrollo de aplicaciones web con arquitectura Full Stack.",
+        "Desarrollo de interfaces funcionales con React, Angular y TypeScript.",
+        "Desarrollo de APIs y lógica de negocio para integración con servicios externos.",
+        "Modelado y administración de bases de datos relacionales SQL Server y MySQL.",
+        "Definición de stack técnico según requerimientos del proyecto."
       ],
       "achievements": [
-        "Entrega de soluciones tecnológicas para múltiples modelos de negocio.",
-        "Liderazgo del ciclo completo de desarrollo: requerimientos a producción.",
-        "Selección y adaptación de tecnologías según necesidad de cada proyecto."
+        "Desarrollo de soluciones tecnológicas para múltiples modelos de negocio.",
+        "Participación en ciclo completo de desarrollo: análisis a producción.",
+        "Selección y adaptación de tecnologías según necesidad del proyecto."
       ],
       "technologies": [
         "React", "Angular", "Node.js", "JavaScript",
@@ -149,39 +148,38 @@
       "name": "Sistema de reportería regional automatizado",
       "slug": "reporterias-regionales",
       "type": "Proyecto empresarial",
-      "description": "Solución orientada a automatizar la generación de reportes regionales en MAPFRE. Se implementó un proceso ETL sobre Oracle Database que reemplazó la carga manual de datos, redujo errores de consistencia y unificó la información financiera y operativa de múltiples países.",
+      "description": "Plataforma orientada a la automatización de generación de reportes regionales. Implementación de procesos ETL sobre Oracle Database para la extracción, transformación y carga de datos financieros y operativos de múltiples países.",
       "technologies": ["Oracle", "PL/SQL", "SQL"],
-      "problem": "La organización enfrentaba procesos manuales de reportería que consumían tiempo significativo del equipo, generaban inconsistencias en los datos y limitaban la capacidad de respuesta ante requerimientos regionales.",
-      "solution": "Se implementó un sistema automatizado de reportería integrado a los sistemas corporativos existentes, utilizando Oracle y PL/SQL para la extracción, transformación y carga de datos con generación automatizada de informes.",
-      "architecture": "Arquitectura basada en procesos ETL sobre Oracle Database con módulos de generación de reportes parametrizables, integrados al flujo operativo regional.",
+      "problem": "Dependencia de procesos manuales para generación de reportes regionales, con inconsistencias en datos y tiempos de respuesta limitados ante requerimientos corporativos.",
+      "solution": "Implementación de sistema automatizado de reportería integrado a sistemas corporativos existentes. Procesos ETL sobre Oracle Database con generación parametrizable de informes.",
+      "architecture": "Arquitectura basada en procesos ETL sobre Oracle Database con módulos de generación de reportes parametrizables integrados al flujo operativo regional.",
       "highlights": [
-        "Automatización y mejora de reportería empresarial.",
+        "Automatización de reportería empresarial.",
         "Soporte a operación regional.",
         "Integración con sistemas internos."
       ],
       "results": [
-        "Reducción significativa del tiempo de generación de reportes.",
-        "Estandarización de la información a nivel regional.",
-        "Mayor precisión y confiabilidad en los datos reportados."
+        "Reducción en tiempo de generación de reportes.",
+        "Estandarización de información a nivel regional.",
+        "Consistencia en datos reportados."
       ]
     },
     {
       "name": "Modernización de plataformas internas legacy",
       "slug": "web-empresariales",
       "type": "Proyecto empresarial",
-      "description": "Aplicaciones web diseñadas para reemplazar herramientas internas con interfaces obsoletas. Construidas con ASP.NET y JavaScript sobre Oracle Database, mejoraron la productividad del equipo operativo y redujeron la carga de mantenimiento sobre sistemas heredados.",
+      "description": "Aplicaciones web desarrolladas para reemplazar herramientas internas con interfaces obsoletas. Construcción con ASP.NET y JavaScript sobre Oracle Database.",
       "technologies": ["JavaScript", "ASP.NET", "HTML5", "CSS3", "Oracle"],
-      "problem": "Procesos internos dependían de herramientas legacy con interfaces obsoletas que limitaban la productividad del equipo y dificultaban el mantenimiento evolutivo.",
-      "solution": "Se desarrollaron aplicaciones web modernas utilizando ASP.NET y JavaScript, integradas con Oracle Database, que modernizaron los flujos de trabajo interno y mejoraron la experiencia de usuario.",
+      "problem": "Herramientas internas legacy con interfaces que limitaban productividad del equipo y dificultaban mantenimiento evolutivo.",
+      "solution": "Desarrollo de aplicaciones web con ASP.NET y JavaScript integradas a Oracle Database, reemplazando flujos de trabajo basados en sistemas heredados.",
       "architecture": "Arquitectura web basada en ASP.NET con capa de presentación en HTML5/CSS3/JavaScript, lógica de negocio en C# y persistencia en Oracle Database.",
       "highlights": [
         "Modernización de herramientas internas.",
         "Mejora en eficiencia operativa."
       ],
       "results": [
-        "Interfaces modernas que mejoraron la productividad del equipo.",
-        "Facilidad de mantenimiento y escalabilidad.",
-        "Reducción de errores operativos."
+        "Actualización de interfaces de herramientas internas.",
+        "Facilidad de mantenimiento y escalabilidad."
       ]
     }
   ],
