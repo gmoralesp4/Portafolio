@@ -1,0 +1,99 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import PdfPrinter from 'pdfmake';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const vfsPath = path.resolve(__dirname, '../node_modules/pdfmake/build/vfs_fonts.js');
+const vfsContent = fs.readFileSync(vfsPath, 'utf-8');
+
+const fontMatch = vfsContent.match(/["']([^"']+\.ttf)["']\s*:\s*["']([^"']+)["']/g);
+const fontData = {};
+for (const match of vfsContent.matchAll(/["']([^"']+\.ttf)["']\s*:\s*["']([^"']+)["']/g)) {
+  fontData[match[1]] = match[2];
+}
+
+const tmpDir = path.resolve(__dirname, '../node_modules/.cache-pdfmake-fonts');
+if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
+
+const fontFiles = {};
+for (const [name, base64] of Object.entries(fontData)) {
+  const filePath = path.join(tmpDir, name);
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, Buffer.from(base64, 'base64'));
+  }
+  const cleanName = path.basename(name, '.ttf').replace(/[-\s]/g, '');
+  fontFiles[cleanName] = filePath;
+}
+
+const fonts = {
+  Roboto: {
+    normal: fontFiles['RobotoRegular'],
+    bold: fontFiles['RobotoMedium'],
+    italics: fontFiles['RobotoItalic'],
+    bolditalics: fontFiles['RobotoMediumItalic'],
+  }
+};
+
+const printer = new PdfPrinter(fonts);
+
+function buildAtsPdf(cv) {
+  const { personalInfo, experience, education, skills } = cv;
+  const allSkills = [...skills.backend, ...skills.frontend, ...skills.databases, ...skills.architecture, ...skills.security];
+  return {
+    content: [
+      { text: personalInfo.fullName.toUpperCase(), style: 'name' },
+      { text: personalInfo.jobTitle, style: 'subtitle' },
+      { text: `Email: ${personalInfo.email} | Tel: ${personalInfo.phone} | ${personalInfo.location}`, style: 'contact' },
+      '',
+      { text: 'RESUMEN PROFESIONAL', style: 'sectionHeader' },
+      { text: personalInfo.summary, style: 'paragraph' },
+      '',
+      { text: 'EXPERIENCIA PROFESIONAL', style: 'sectionHeader' },
+      ...experience.map(exp => [
+        { text: exp.position, style: 'jobTitle' },
+        { text: `${exp.company} | ${exp.startDate || ''} - ${exp.current ? 'Presente' : exp.endDate}`, style: 'company' },
+        ...exp.responsibilities.map(r => ({ text: `• ${r}`, style: 'bullet' })),
+        '',
+      ]).flat(),
+      { text: 'EDUCACIÓN', style: 'sectionHeader' },
+      ...education.map(edu => [
+        { text: `${edu.degree} — ${edu.institution}`, style: 'eduLine' },
+        { text: `${edu.status} | ${edu.startDate} - ${edu.endDate}`, style: 'eduDates' },
+        '',
+      ]).flat(),
+      { text: 'HABILIDADES', style: 'sectionHeader' },
+      { text: allSkills.join(' | '), style: 'skills' },
+    ],
+    styles: {
+      name: { fontSize: 18, bold: true, margin: [0, 0, 0, 4] },
+      subtitle: { fontSize: 12, margin: [0, 0, 0, 4], color: '#334155' },
+      contact: { fontSize: 9, margin: [0, 0, 0, 8], color: '#64748b' },
+      sectionHeader: { fontSize: 11, bold: true, margin: [0, 12, 0, 4], color: '#0f172a' },
+      paragraph: { fontSize: 9, lineHeight: 1.4 },
+      jobTitle: { fontSize: 10, bold: true, margin: [0, 6, 0, 2] },
+      company: { fontSize: 9, margin: [0, 0, 0, 2], color: '#475569' },
+      bullet: { fontSize: 9, margin: [0, 1, 0, 0], lineHeight: 1.3 },
+      eduLine: { fontSize: 9, margin: [0, 2, 0, 0] },
+      eduDates: { fontSize: 8, color: '#64748b' },
+      skills: { fontSize: 9, margin: [0, 4, 0, 0], lineHeight: 1.4 },
+    },
+    defaultStyle: { font: 'Roboto' },
+  };
+}
+
+const cvData = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../src/data/cv.json'), 'utf-8'));
+const docDefinition = buildAtsPdf(cvData);
+const pdfDoc = printer.createPdfKitDocument(docDefinition);
+
+const chunks = [];
+pdfDoc.on('data', chunk => chunks.push(chunk));
+pdfDoc.on('end', () => {
+  const outputDir = path.resolve(__dirname, '../public/cv');
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+  const outPath = path.join(outputDir, 'Gerson_Morales_CV_ATS.pdf');
+  fs.writeFileSync(outPath, Buffer.concat(chunks));
+  console.log(`PDF generated: ${outPath}`);
+});
+pdfDoc.end();
